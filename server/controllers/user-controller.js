@@ -1,6 +1,7 @@
 const User = require("../models/models.js").User;
 const UserService = require("../services/user-service");
 
+//TODO : Доделать
 class UserController {
   async registration(request, response, next) {
     try {
@@ -12,7 +13,7 @@ class UserController {
       });
       return response.json(data);
     } catch (error) {
-      return response.json([12312312, 312, 31, 321, 312, 31, 3]);
+      next(error);
     }
   }
   async login(request, response, next) {
