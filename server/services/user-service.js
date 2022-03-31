@@ -10,11 +10,10 @@ class UserService {
       throw ApiError.BadRequest(`Пользователь с таким ${email} уже существует`);
     }
     const user = await UserRepository.createUser(email, password);
-    const tokens = TokenService.generateTokens({
+    const tokens = await TokenService.generateTokensAndSave(user.id, {
       id: user.id,
       email: user.email,
     });
-    await tokenRepository.saveToken(user.id, tokens.refreshToken);
     return {
       user,
       tokens,
@@ -23,21 +22,17 @@ class UserService {
 
   async login(email, password) {
     const user = await UserRepository.getUserByEmail(email);
-    console.log("password", password);
     if (!user) {
       throw ApiError.BadRequest(`Пользователь с таким ${email} не найден`);
     }
     const isPasswordCorrectly = password === user.password;
-    console.log("passwordTRU", isPasswordCorrectly);
     if (!isPasswordCorrectly) {
       throw ApiError.BadRequest("Пароль не верный");
     }
-    const tokens = TokenService.generateTokens({
+    const tokens = await TokenService.generateTokensAndSave(user.id, {
       id: user.id,
       email: user.email,
     });
-    console.log(tokens);
-    await tokenRepository.saveToken(user.id, tokens.refreshToken);
     return {
       user,
       tokens,
@@ -46,6 +41,27 @@ class UserService {
 
   async logout(refreshToken) {
     await tokenRepository.deleteTokenUser(refreshToken);
+  }
+
+  async refresh(refreshToken) {
+    if (!refreshToken) {
+      throw ApiError.UnauthorizedError();
+    }
+    const tokenData = TokenService.validateRefreshToken(refreshToken);
+    const tokenFromDB = await tokenRepository.findToken(refreshToken);
+    if (!tokenData || !tokenFromDB) {
+      throw ApiError.UnauthorizedError();
+    }
+
+    const user = await UserRepository.getUserByEmail(tokenData.email);
+    const tokens = await TokenService.generateTokensAndSave(user.id, {
+      id: user.id,
+      email: user.email,
+    });
+    return {
+      user,
+      tokens,
+    };
   }
 }
 

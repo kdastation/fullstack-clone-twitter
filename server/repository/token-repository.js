@@ -18,6 +18,13 @@ class TokenRepository {
       where: { refreshToken },
     });
   }
+
+  async findToken(refreshToken) {
+    const token = await Token.findOne({
+      where: { refreshToken },
+    });
+    return token;
+  }
 }
 
 module.exports = new TokenRepository();

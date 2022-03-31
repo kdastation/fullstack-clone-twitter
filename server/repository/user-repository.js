@@ -13,6 +13,11 @@ class UserRepository {
     const user = await User.create({ email, password });
     return user;
   }
+
+  async getAllUsers() {
+    const users = await User.findAll();
+    return users;
+  }
 }
 
 module.exports = new UserRepository();
