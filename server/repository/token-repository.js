@@ -5,13 +5,18 @@ class TokenRepository {
     const tokenData = await Token.findOne({
       where: { userId },
     });
-    console.log(tokenData);
     if (tokenData) {
       tokenData.refreshToken = refreshToken;
       return tokenData.save();
     }
     const token = await Token.create({ userId, refreshToken });
     return token;
+  }
+
+  async deleteTokenUser(refreshToken) {
+    await Token.destroy({
+      where: { refreshToken },
+    });
   }
 }
 
