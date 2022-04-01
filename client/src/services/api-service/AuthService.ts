@@ -1,3 +1,4 @@
+import axios from "axios";
 import { ApiURLNames } from "./api-url-names";
 import { AuthResponse } from "../../models/response/auth-response";
 import { upgradeAxios } from "./main-settings-api";
@@ -8,6 +9,14 @@ export class AuthService {
       email,
       password,
     });
+    return response.data;
+  }
+
+  static async refreshTokenAndReturnResponse(): Promise<AuthResponse> {
+    const response = await axios.get<AuthResponse>(
+      ApiURLNames.MAIN_URL + ApiURLNames.REFRESH_TOKEN,
+      { withCredentials: true }
+    );
     return response.data;
   }
 }

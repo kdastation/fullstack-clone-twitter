@@ -3,7 +3,7 @@ const tokenRepository = require("../repository/token-repository");
 
 class TokenService {
   generateTokens(payload) {
-    const accessToken = jwt.sign(payload, "secret-key", { expiresIn: "30m" });
+    const accessToken = jwt.sign(payload, "secret-key", { expiresIn: "15m" });
     const refreshToken = jwt.sign(payload, "secret-key", { expiresIn: "30d" });
     return {
       accessToken,
