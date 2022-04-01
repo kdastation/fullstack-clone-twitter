@@ -7,6 +7,7 @@ const router = require("./routes/router.js");
 const cookieParser = require("cookie-parser");
 const ErrorMiddleware = require("./middlewares/error-middleware.js");
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 7000;
 const app = express();
 
