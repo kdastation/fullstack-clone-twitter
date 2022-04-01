@@ -1,0 +1,12 @@
+import { IUser } from "./../../models/user-model";
+import { rootState } from "./../store";
+
+export class AuthSelector {
+  static getAuthStatus(state: rootState): boolean {
+    return state.auth.isAuth;
+  }
+
+  static getUserData(state: rootState): IUser {
+    return state.auth.userData;
+  }
+}

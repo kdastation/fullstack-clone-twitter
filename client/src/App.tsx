@@ -1,9 +1,14 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { FC } from "react";
+import { LoginForm } from "./components/forms/login-form";
+import { Test } from "./components/test";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App: FC = () => {
+  return (
+    <div>
+      <LoginForm />
+      <Test />
+    </div>
+  );
+};
 
 export default App;
