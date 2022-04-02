@@ -1,13 +1,12 @@
-const postService = require("../services/post-service");
+const PostService = require("../services/post-service");
 
 class PostContoller {
   async createPost(request, response, next) {
     try {
       const { content } = request.body;
+      console.log(request);
       const img = request.files?.img;
-      const newPost = img
-        ? await postService.createPost(content, img)
-        : await postService.createPostWithOutImg(content);
+      const newPost = await PostService.createPost(content, img);
       return response.json(newPost);
     } catch (error) {
       next(error);

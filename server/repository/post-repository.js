@@ -1,16 +1,11 @@
 const { Post } = require("../models/models");
 
 class PostRepository {
-  static async createPost(content, img) {
+  static async createPost(content, fileNameImg) {
     const newPost = await Post.create({
       content,
-      img,
+      img: fileNameImg,
     });
-    return newPost;
-  }
-
-  static async createPostWithOutImg(content) {
-    const newPost = await Post.create({ content });
     return newPost;
   }
 }
