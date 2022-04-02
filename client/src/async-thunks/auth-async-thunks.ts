@@ -1,5 +1,5 @@
 import { setTokenInLocalStorage } from "./../utils/utils";
-import { AuthService } from "./../services/api-service/AuthService";
+import { AuthService } from "../services/api-service/auth-service";
 import { appDispatch } from "./../redux/store";
 import { setUser } from "../redux/reducers/auth-reducer";
 

@@ -17,7 +17,7 @@ class PostService {
 
   _saveImgPost(img, fileName) {
     // eslint-disable-next-line no-undef
-    img.mv(path.resolve(__dirname, "..", "static", fileName));
+    img.mv(path.resolve(__dirname, "..", "static", "img", fileName));
   }
 }
 

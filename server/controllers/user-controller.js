@@ -1,4 +1,3 @@
-const User = require("../models/models.js").User;
 const userRepository = require("../repository/user-repository.js");
 const UserService = require("../services/user-service");
 const TokenUtils = require("../utils/token-utils.js");

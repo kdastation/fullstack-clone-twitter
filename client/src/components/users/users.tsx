@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { IUser } from "../../models/user-model";
-import { UserService } from "../../services/api-service/UserService";
+import { UserService } from "../../services/api-service/user-service";
 
 const Users: FC = () => {
   const [users, setUsers] = useState<IUser[]>([]);
