@@ -12,10 +12,17 @@ const Token = sequelize.define("token", {
   refreshToken: { type: DataTypes.STRING, require: true },
 });
 
+const Post = sequelize.define("post", {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  content: { type: DataTypes.TEXT },
+  img: { type: DataTypes.STRING, allowNull: true },
+});
+
 User.hasMany(Token);
 Token.belongsTo(User);
 
 module.exports = {
   User,
   Token,
+  Post,
 };
