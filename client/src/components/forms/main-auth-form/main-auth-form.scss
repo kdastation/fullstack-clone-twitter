@@ -1,0 +1,35 @@
+.main_auth_form_wrapper{
+    max-width: 350px;
+}
+
+.auth_form_container{
+    padding: 20px;
+    text-align: center;
+    .auth_form__title{
+        font-size: 24px;
+        color: blue;
+    }
+    &__text{
+        color: rgb(142, 142, 142);
+        margin-top: 10px;
+        font-weight: 600;
+        font-size: 17px;
+        padding: 0 20px;
+        margin-bottom: 10px;
+    }
+    &__btn-link{
+        border: none;
+        background-color: blue;
+        outline: none;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+.btn-link__text{
+    color: white;
+    font-size: 16px;
+}
