@@ -1,4 +1,4 @@
-import { IUser } from "./../../models/user-model";
+import { IUser } from "../../types/user-model";
 import { rootState } from "./../store";
 
 export class AuthSelector {

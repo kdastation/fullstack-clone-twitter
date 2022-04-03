@@ -10,6 +10,7 @@ export const loginUser =
       dispatch(setUser(authResponse.user));
       setTokenInLocalStorage(authResponse.tokens.accessToken);
     } catch (error: any) {
-      throw error.response.data;
+      console.log(error.message, error);
+      throw error.response?.data || error;
     }
   };

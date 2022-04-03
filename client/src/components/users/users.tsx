@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { IUser } from "../../models/user-model";
+import { IUser } from "../../types/user-model";
 import { UserService } from "../../services/api-service/user-service";
 
 const Users: FC = () => {

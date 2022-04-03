@@ -1,4 +1,4 @@
-import { IUser } from "../../models/user-model";
+import { IUser } from "../../types/user-model";
 import { ApiURLNames } from "./api-url-names";
 import { upgradeAxios } from "./main-settings-api";
 

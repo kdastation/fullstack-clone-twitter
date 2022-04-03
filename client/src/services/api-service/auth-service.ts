@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ApiURLNames } from "./api-url-names";
-import { AuthResponse } from "../../models/response/auth-response";
+import { AuthResponse } from "../../types/response/auth-response";
 import { upgradeAxios } from "./main-settings-api";
 
 export class AuthService {
