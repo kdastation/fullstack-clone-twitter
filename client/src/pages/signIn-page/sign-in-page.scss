@@ -1,0 +1,66 @@
+.signIn_wrapper{
+    height: 100vh;
+    display: flex;
+}
+
+.left_side{
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #71C9F8;
+    position: relative;
+    overflow: hidden;
+    &__icon{
+        position: absolute;
+        left: 50%;
+        top: 53%;
+        color: rgb(29, 161, 242);
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+}
+
+.right_side{
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left_side_navigation{
+    max-width: 380px;
+    z-index: 2;
+    &__item{
+        margin-bottom: 15px;
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        &__icon{
+            margin-right: 30px ;
+        }
+    }
+}
+
+.rigth_side_info{
+    max-width: 380px;
+
+    &__text{
+        font-weight: 700;
+        font-size: 24px;
+        margin-bottom: 40px;
+        margin-top: 20px;
+    }
+    &__description{
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    &__icon{
+        font-size: 40px;
+        color: #71C9F8;
+    }
+}
+

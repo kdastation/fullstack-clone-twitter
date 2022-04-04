@@ -1,11 +1,15 @@
 import { FC } from "react";
-import { MainAuthForm } from "./components/forms/main-auth-form/main-auth-form";
 import { Router } from "./utils-components/router/router";
+import { Header } from "./components/header/header";
+import "./app.scss";
+import { SignInPage } from "./pages/signIn-page/singIn-page";
 
 const App: FC = () => {
   return (
     <div>
-      <Router />
+      <SignInPage />
+      {/* <Header />
+      <Router /> */}
     </div>
   );
 };
