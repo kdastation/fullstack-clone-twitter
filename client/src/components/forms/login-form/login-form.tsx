@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -6,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../async-thunks/auth-async-thunks";
 import { useSubmitData } from "../../../hooks/submit-data-hook";
 import { RoutesPathNames } from "../../../routes/types/routes-path-names";
+import { ButtonBlack } from "../../../styled-components/btn-black";
 import { StyledErrorMessageForm } from "../../../styled-components/styled-error-message-form";
 import { StyledTextField } from "../../../styled-components/styled-text-field";
 import { StyledWrapperInput } from "../../../styled-components/styled-wrapper-input";
@@ -22,7 +22,7 @@ interface LoginFormFieldls {
 const LoginForm: FC<LoginFormProps> = (props) => {
   const dispatch = useDispatch();
   const navigation = useNavigate();
-  const { register, handleSubmit } = useForm<LoginFormFieldls>({
+  const { register, handleSubmit, formState } = useForm<LoginFormFieldls>({
     mode: "onBlur",
   });
   const { messageError, submitData } = useSubmitData(
@@ -32,7 +32,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
     }
   );
   return (
-    <div style={{ maxWidth: "350px" }}>
+    <div>
       {messageError && (
         <StyledErrorMessageForm>{messageError}</StyledErrorMessageForm>
       )}
@@ -52,7 +52,9 @@ const LoginForm: FC<LoginFormProps> = (props) => {
             type="password"
           />
         </StyledWrapperInput>
-        <Button type="submit">Логин</Button>
+        <ButtonBlack disabled={formState.isSubmitting} type="submit">
+          <div>Логин</div>
+        </ButtonBlack>
       </form>
     </div>
   );

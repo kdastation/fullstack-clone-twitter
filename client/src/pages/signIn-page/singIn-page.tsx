@@ -6,8 +6,16 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import { ButtonBlue } from "../../styled-components/btn-blue";
 import { ButtonWhite } from "../../styled-components/btn-white";
+import { CustomModal } from "../../components/custom-modal/custom-modal";
+import { useMode } from "../../hooks/mode-hook";
+import { RegistrationForm } from "../../components/forms/registration-form/registration-form";
 
 const SignInPage: FC = () => {
+  const {
+    isMode: isActiveModal,
+    deactivateMode: onCloseModal,
+    activateMode: onOpenModal,
+  } = useMode();
   return (
     <div className="signIn_wrapper">
       <div className="left_side">
@@ -44,14 +52,26 @@ const SignInPage: FC = () => {
           <div className="rigth_side_info__description">
             Присоеденяйтесь к Твиттеру прямо сейчас!
           </div>
-          <ButtonBlue sx={{ marginBottom: "20px" }}>
+          <ButtonBlue onClick={onOpenModal} sx={{ marginBottom: "20px" }}>
             Зарегистроваться
           </ButtonBlue>
           <ButtonWhite>Войти</ButtonWhite>
         </div>
       </div>
+      {isActiveModal && (
+        <CustomModal isActiveModal={isActiveModal} onCloseModal={onCloseModal}>
+          <div style={{ padding: "60px", minWidth: "350px" }}>
+            <div>
+              <RegistrationForm />
+            </div>
+          </div>
+        </CustomModal>
+      )}
     </div>
   );
 };
 
 export { SignInPage };
+{
+  /* <LoginForm /> */
+}
