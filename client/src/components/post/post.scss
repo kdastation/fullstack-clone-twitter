@@ -1,0 +1,35 @@
+.post_wrapper{
+    display: flex;
+    gap: 10px;
+}
+
+.post_left{
+    img{
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
+
+.post_body_header{
+    margin-bottom: 5px;
+}
+
+.post_body_content{
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.post_body_footer{
+    display: flex;
+    gap: 10px;
+    padding-right: 50px;
+    justify-content: space-between;
+    &__icon_btn{
+        cursor: pointer;
+        &__number{
+            font-weight: 600;
+        }
+    }
+}
