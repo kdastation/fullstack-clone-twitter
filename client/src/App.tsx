@@ -1,15 +1,26 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Router } from "./utils-components/router/router";
-import { Header } from "./components/header/header";
 import "./app.scss";
-import { SignInPage } from "./pages/signIn-page/singIn-page";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthSelector } from "./redux/selectors/auth-selector";
+import { checkAuth } from "./async-thunks/auth-async-thunks";
 
+//TODO: Доделать
 const App: FC = () => {
+  const isLoading = useSelector(AuthSelector.getLoadingStatus);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-      <SignInPage />
-      {/* <Header />
-      <Router /> */}
+      <Router />
     </div>
   );
 };

@@ -4,16 +4,13 @@ import { StyledWrapperInput } from "../../../styled-components/styled-wrapper-in
 import { useForm } from "react-hook-form";
 import { ButtonBlack } from "../../../styled-components/btn-black";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-
-const validators = yup.object().shape({
-  email: yup.string().required("Поле обязательно для заполнения"),
-  password: yup.string().required("Поле обязательно для заполнения"),
-  confirmPassword: yup
-    .string()
-    .required("Поле обязательно для заполнения")
-    .oneOf([yup.ref("password")], "Пароли не совпадают"),
-});
+import { validatorsRegistrationForm } from "../../../validators/validators-registration-form";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSubmitData } from "../../../hooks/submit-data-hook";
+import { registrationUser } from "../../../async-thunks/auth-async-thunks";
+import { RoutesPathNames } from "../../../routes/types/routes-path-names";
+import { StyledErrorMessageForm } from "../../../styled-components/styled-error-message-form";
 
 interface RegistrationFormFields {
   email: string;
@@ -22,22 +19,31 @@ interface RegistrationFormFields {
 }
 
 const RegistrationForm: FC = (props) => {
+  const dispatch = useDispatch();
+  const navigation = useNavigate();
   const { register, handleSubmit, formState } = useForm<RegistrationFormFields>(
     {
       mode: "onBlur",
-      resolver: yupResolver(validators),
+      resolver: yupResolver(validatorsRegistrationForm),
     }
   );
-  const testSubmit = (data: RegistrationFormFields) => {
-    console.log(data);
-  };
+  const { submitData: registerUserSubmit, messageError } =
+    useSubmitData<RegistrationFormFields>(
+      async (data: RegistrationFormFields) => {
+        await dispatch(registrationUser(data.email, data.password));
+        navigation(RoutesPathNames.PROFILE_PAGE);
+      }
+    );
   return (
     <div>
-      <form onSubmit={handleSubmit(testSubmit)}>
+      {messageError && (
+        <StyledErrorMessageForm>{messageError}</StyledErrorMessageForm>
+      )}
+      <form onSubmit={handleSubmit(registerUserSubmit)}>
         <StyledWrapperInput>
           <StyledTextField
             error={!!formState.errors?.email}
-            helperText={formState.errors.email?.message || ""}
+            helperText={formState.errors.email?.message}
             label="email"
             {...register("email")}
           />

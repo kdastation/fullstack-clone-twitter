@@ -1,17 +1,11 @@
-import { LoginPage } from "../pages/login-page/login-page";
-import { RegistrationPage } from "../pages/registration-page/registration-page";
+import { SignInPage } from "../pages/signIn-page/singIn-page";
 import { IRoute } from "./types/route";
 import { RoutesPathNames } from "./types/routes-path-names";
 
 export const publicRoutes: IRoute[] = [
   {
-    path: RoutesPathNames.LOGIN_PAGE,
-    Component: LoginPage,
-    exact: true,
-  },
-  {
-    path: RoutesPathNames.REGISTRATION_PAGE,
-    Component: RegistrationPage,
+    path: RoutesPathNames.SIGN_IN_PAGE,
+    Component: SignInPage,
     exact: true,
   },
 ];

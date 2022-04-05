@@ -11,7 +11,7 @@ interface initialStateAuth {
 const inititalState: initialStateAuth = {
   isAuth: false,
   userData: {} as IUser,
-  isLoading: false,
+  isLoading: true,
 };
 
 export const authReducer = createSlice({
@@ -20,9 +20,14 @@ export const authReducer = createSlice({
   reducers: {
     setUser(state, action: PayloadAction<IUser>) {
       state.userData = action.payload;
-      state.isAuth = true;
+    },
+    setIsAuth(state, action: PayloadAction<boolean>) {
+      state.isAuth = action.payload;
+    },
+    setLoading(state, action: PayloadAction<boolean>) {
+      state.isLoading = action.payload;
     },
   },
 });
 
-export const { setUser } = authReducer.actions;
+export const { setUser, setLoading, setIsAuth } = authReducer.actions;

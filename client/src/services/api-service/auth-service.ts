@@ -12,11 +12,29 @@ export class AuthService {
     return response.data;
   }
 
+  static async registration(
+    email: string,
+    password: string
+  ): Promise<AuthResponse> {
+    const response = await upgradeAxios.post<AuthResponse>(
+      ApiURLNames.REGISTRATION,
+      {
+        email,
+        password,
+      }
+    );
+    return response.data;
+  }
+
   static async refreshTokenAndReturnResponse(): Promise<AuthResponse> {
     const response = await axios.get<AuthResponse>(
       ApiURLNames.MAIN_URL + ApiURLNames.REFRESH_TOKEN,
       { withCredentials: true }
     );
     return response.data;
+  }
+
+  static async logout() {
+    return await upgradeAxios.post(ApiURLNames.LOGOUT);
   }
 }

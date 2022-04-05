@@ -9,12 +9,18 @@ import { ButtonWhite } from "../../styled-components/btn-white";
 import { CustomModal } from "../../components/custom-modal/custom-modal";
 import { useMode } from "../../hooks/mode-hook";
 import { RegistrationForm } from "../../components/forms/registration-form/registration-form";
+import { LoginForm } from "../../components/forms/login-form/login-form";
 
 const SignInPage: FC = () => {
   const {
-    isMode: isActiveModal,
-    deactivateMode: onCloseModal,
-    activateMode: onOpenModal,
+    isMode: isActiveModalRegister,
+    deactivateMode: onCloseModalRegister,
+    activateMode: onOpenModalRegister,
+  } = useMode();
+  const {
+    isMode: isActiveModalLogin,
+    activateMode: onOpenModalLogin,
+    deactivateMode: onCloseModalLogin,
   } = useMode();
   return (
     <div className="signIn_wrapper">
@@ -52,17 +58,35 @@ const SignInPage: FC = () => {
           <div className="rigth_side_info__description">
             Присоеденяйтесь к Твиттеру прямо сейчас!
           </div>
-          <ButtonBlue onClick={onOpenModal} sx={{ marginBottom: "20px" }}>
+          <ButtonBlue
+            onClick={onOpenModalRegister}
+            sx={{ marginBottom: "20px" }}
+          >
             Зарегистроваться
           </ButtonBlue>
-          <ButtonWhite>Войти</ButtonWhite>
+          <ButtonWhite onClick={onOpenModalLogin}>Войти</ButtonWhite>
         </div>
       </div>
-      {isActiveModal && (
-        <CustomModal isActiveModal={isActiveModal} onCloseModal={onCloseModal}>
+      {isActiveModalRegister && (
+        <CustomModal
+          isActiveModal={isActiveModalRegister}
+          onCloseModal={onCloseModalRegister}
+        >
           <div style={{ padding: "60px", minWidth: "350px" }}>
             <div>
               <RegistrationForm />
+            </div>
+          </div>
+        </CustomModal>
+      )}
+      {isActiveModalLogin && (
+        <CustomModal
+          isActiveModal={isActiveModalLogin}
+          onCloseModal={onCloseModalLogin}
+        >
+          <div style={{ padding: "60px", minWidth: "350px" }}>
+            <div>
+              <LoginForm />
             </div>
           </div>
         </CustomModal>
@@ -72,6 +96,3 @@ const SignInPage: FC = () => {
 };
 
 export { SignInPage };
-{
-  /* <LoginForm /> */
-}

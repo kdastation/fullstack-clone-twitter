@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import { AuthSelector } from "../../redux/selectors/auth-selector";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { privateRoutes } from "../../routes/private-routes";
 import { publicRoutes } from "../../routes/public-routes";
-import { NotFoundPage } from "../../pages/not-found-page/not-found-page";
+import { RoutesPathNames } from "../../routes/types/routes-path-names";
 
 const Router: FC = () => {
   const isAuth = useSelector(AuthSelector.getAuthStatus);
@@ -17,7 +17,11 @@ const Router: FC = () => {
             console.log(path);
             return <Route path={path} element={<Component />} key={path} />;
           })}
-          <Route path="*" element={<NotFoundPage />} key={"*/private"} />
+          <Route
+            path="*"
+            element={<Navigate to={RoutesPathNames.PROFILE_PAGE} replace />}
+            key={"*/private"}
+          />
         </Routes>
       ) : (
         <Routes>
@@ -25,7 +29,11 @@ const Router: FC = () => {
             console.log(path);
             return <Route path={path} element={<Component />} key={path} />;
           })}
-          <Route path="*" element={<NotFoundPage />} key={"*/public"} />
+          <Route
+            path="*"
+            element={<Navigate to={RoutesPathNames.SIGN_IN_PAGE} replace />}
+            key={"*/public"}
+          />
         </Routes>
       )}
     </>

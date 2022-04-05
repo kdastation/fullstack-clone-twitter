@@ -9,4 +9,8 @@ export class AuthSelector {
   static getUserData(state: rootState): IUser {
     return state.auth.userData;
   }
+
+  static getLoadingStatus(state: rootState): boolean {
+    return state.auth.isLoading;
+  }
 }
