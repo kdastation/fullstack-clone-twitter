@@ -21,6 +21,9 @@ const Post = sequelize.define("post", {
 User.hasMany(Token);
 Token.belongsTo(User);
 
+User.hasMany(Post);
+Post.belongsTo(User);
+
 module.exports = {
   User,
   Token,
