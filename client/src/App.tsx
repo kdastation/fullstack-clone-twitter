@@ -4,29 +4,31 @@ import "./app.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthSelector } from "./redux/selectors/auth-selector";
 import { checkAuth } from "./async-thunks/auth-async-thunks";
-import { FormCreatePost } from "./components/forms/form-create-post/form-create-post";
-import { Post } from "./components/post/post";
 
 //TODO: Доделать
 const App: FC = () => {
-  // const isLoading = useSelector(AuthSelector.getLoadingStatus);
-  // const dispatch = useDispatch();
+  const isLoading = useSelector(AuthSelector.getLoadingStatus);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(checkAuth());
-  // }, []);
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, []);
 
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      <Post />
-      <FormCreatePost />
-      {/* <Router /> */}
+      <Router />
     </div>
   );
 };
+
+{
+  /* <SideBar />
+      <Post />
+      <FormCreatePost /> */
+}
 
 export default App;

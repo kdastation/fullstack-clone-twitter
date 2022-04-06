@@ -1,0 +1,16 @@
+.layout_container{
+    display: grid;
+    grid-template-columns: 250px 3fr 2fr;
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 40px;
+
+    &__side_bar{
+        flex-basis: 250px;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    .layout_container__body{
+        flex-grow: 1;
+    }
+}

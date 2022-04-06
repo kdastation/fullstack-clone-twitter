@@ -8,7 +8,7 @@ import "./post.scss";
 
 const Post: FC = () => {
   return (
-    <div style={{ maxWidth: "500px", margin: "0 auto" }}>
+    <div>
       <div className="post_wrapper">
         <div className="post_left">
           <img
