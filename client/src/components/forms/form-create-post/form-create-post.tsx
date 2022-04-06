@@ -5,11 +5,33 @@ import ImageIcon from "@mui/icons-material/Image";
 import { ButtonBlue } from "../../../styled-components/btn-blue";
 import CircularProgress from "@mui/material/CircularProgress";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
+import { useForm } from "react-hook-form";
+import { useSubmitData } from "../../../hooks/submit-data-hook";
 
+const permissibleCountWords = 280;
+interface FormCreatePostFields {
+  content: string;
+}
 const FormCreatePost: FC = () => {
+  const { handleSubmit, register, watch } = useForm<FormCreatePostFields>({
+    mode: "onBlur",
+  });
+  const { messageError, submitData: createPostSumbit } = useSubmitData(
+    async (data: FormCreatePostFields) => {
+      await console.log(data);
+    }
+  );
+  const totalCountWordsInContentField = watch("content")?.length || 0;
+  const totalCountWordsInContentFieldInPrecent = Math.round(
+    (totalCountWordsInContentField / permissibleCountWords) * 100
+  );
+  const WordLimitExceeded =
+    totalCountWordsInContentField > permissibleCountWords;
+
+  console.log(totalCountWordsInContentField);
   return (
     <div>
-      <form action="">
+      <form onSubmit={handleSubmit(createPostSumbit)}>
         <div className="form_body_post">
           <div className="form_body_post__avatar">
             <img
@@ -21,6 +43,7 @@ const FormCreatePost: FC = () => {
             <TextareaAutosize
               className="form_body_post__text_field"
               placeholder="Что у вас нового?"
+              {...register("content")}
             />
           </div>
         </div>
@@ -35,18 +58,24 @@ const FormCreatePost: FC = () => {
           </ul>
           <div className="form_post_footer__right">
             <div className="form_post_footer__right__total_count_words">
-              280
+              {permissibleCountWords}
             </div>
             <div className="form_post_footer__right__border"></div>
             <div className="form_post_footer__right__info_progress info_progress">
-              <span className="info_progress__count_words">10</span>
+              <span className="info_progress__count_words">
+                {totalCountWordsInContentField}
+              </span>
               <CircularProgress
                 variant="determinate"
-                color="primary"
-                value={100}
+                color={!WordLimitExceeded ? "primary" : "error"}
+                value={
+                  WordLimitExceeded
+                    ? 100
+                    : totalCountWordsInContentFieldInPrecent
+                }
               />
             </div>
-            <ButtonBlue>Твитнуть</ButtonBlue>
+            <ButtonBlue type="submit">Твитнуть</ButtonBlue>
           </div>
         </div>
       </form>

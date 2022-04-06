@@ -4,8 +4,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
 import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
-import "./side-bar.scss";
 import { ButtonBlue } from "../../styled-components/btn-blue";
+import "./side-bar.scss";
 
 const stylesIcon: SxProps<Theme> = {
   color: "#71C9F8",
@@ -13,7 +13,7 @@ const stylesIcon: SxProps<Theme> = {
 
 const SideBar: FC = () => {
   return (
-    <div>
+    <div className="side_bar_wrapper">
       <div>
         <ul className="side_bar_icons">
           <li className="side_bar_icons__item">
