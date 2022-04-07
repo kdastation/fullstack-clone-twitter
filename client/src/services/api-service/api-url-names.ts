@@ -6,4 +6,5 @@ export enum ApiURLNames {
   USERS = "/users",
   REFRESH_TOKEN = "/refresh",
   POST = "/post",
+  POSTS = "/posts",
 }

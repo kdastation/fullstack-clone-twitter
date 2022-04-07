@@ -1,14 +1,21 @@
 import { IconButton } from "@mui/material";
-import { FC } from "react";
+import { FC, memo } from "react";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import ReplyIcon from "@mui/icons-material/Reply";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { IPost } from "../../types/post/post";
 import "./post.scss";
 
-const Post: FC = () => {
+interface PostProps {
+  postData: IPost;
+}
+
+const Post: FC<PostProps> = (props) => {
+  const { postData } = props;
+  console.log("RENDER POST");
   return (
-    <div>
+    <div className="post_container">
       <div className="post_wrapper">
         <div className="post_left">
           <img
@@ -22,12 +29,7 @@ const Post: FC = () => {
               <b>FavoriteBorderIcon</b>
             </div>
           </div>
-          <div className="post_body_content">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-            eveniet fugit quis porro pariatur consequatur? Neque eligendi non
-            libero est repellat blanditiis quo modi ratione iure! Voluptate
-            quibusdam ratione maiores.
-          </div>
+          <div className="post_body_content">{postData.content}</div>
           <div className="post_body_footer">
             <div className="post_body_footer__icon_btn">
               <IconButton>
@@ -57,4 +59,6 @@ const Post: FC = () => {
   );
 };
 
-export { Post };
+const MemoPost = memo(Post);
+
+export { Post, MemoPost };

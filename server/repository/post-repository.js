@@ -9,6 +9,11 @@ class PostRepository {
     });
     return newPost;
   }
+
+  static async getAllPosts() {
+    const posts = Post.findAll();
+    return posts;
+  }
 }
 
 module.exports = PostRepository;

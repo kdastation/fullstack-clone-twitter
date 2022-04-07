@@ -1,3 +1,4 @@
+const PostRepository = require("../repository/post-repository");
 const PostService = require("../services/post-service");
 
 class PostContoller {
@@ -8,6 +9,15 @@ class PostContoller {
       const userId = request.user.id;
       const newPost = await PostService.createPost(content, img, userId);
       return response.json(newPost);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getAllPosts(request, response, next) {
+    try {
+      const posts = await PostRepository.getAllPosts();
+      return response.json(posts);
     } catch (error) {
       next(error);
     }

@@ -9,4 +9,8 @@ export class PostApiService {
     );
     return receviedData.data;
   }
+  static async getAllPosts(): Promise<IPost[]> {
+    const response = await upgradeAxios.get<IPost[]>(ApiURLNames.POSTS);
+    return response.data;
+  }
 }

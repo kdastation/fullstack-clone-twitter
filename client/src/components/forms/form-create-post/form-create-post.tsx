@@ -5,29 +5,22 @@ import ImageIcon from "@mui/icons-material/Image";
 import { ButtonBlue } from "../../../styled-components/btn-blue";
 import CircularProgress from "@mui/material/CircularProgress";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
-import { useForm } from "react-hook-form";
-import { useSubmitData } from "../../../hooks/submit-data-hook";
+import { useFormCreatePost } from "../../../hooks/form-create-post-hook";
 
-const permissibleCountWords = 280;
-interface FormCreatePostFields {
+export interface FormCreatePostFields {
   content: string;
 }
+//TODO : доделать
 const FormCreatePost: FC = () => {
-  const { handleSubmit, register, watch } = useForm<FormCreatePostFields>({
-    mode: "onBlur",
-  });
-  const { messageError, submitData: createPostSumbit } = useSubmitData(
-    async (data: FormCreatePostFields) => {
-      await console.log(data);
-    }
-  );
-  const totalCountWordsInContentField = watch("content")?.length || 0;
-  const totalCountWordsInContentFieldInPrecent = Math.round(
-    (totalCountWordsInContentField / permissibleCountWords) * 100
-  );
-  const WordLimitExceeded =
-    totalCountWordsInContentField > permissibleCountWords;
-
+  const {
+    totalCountWordsInContentField,
+    totalCountWordsInContentFieldInPrecent,
+    permissibleCountWords,
+    WordLimitExceeded,
+    handleSubmit,
+    createPostSumbit,
+    register,
+  } = useFormCreatePost();
   console.log(totalCountWordsInContentField);
   return (
     <div>

@@ -1,8 +1,7 @@
 import { Paper } from "@mui/material";
 import { FC } from "react";
 import { FormCreatePost } from "../../components/forms/form-create-post/form-create-post";
-import { Post } from "../../components/post/post";
-
+import { Posts } from "../../components/posts/posts";
 import "./main-page.scss";
 
 const MainPage: FC = () => {
@@ -13,7 +12,7 @@ const MainPage: FC = () => {
         <FormCreatePost />
       </div>
       <div>
-        <Post />
+        <Posts />
       </div>
     </Paper>
   );
