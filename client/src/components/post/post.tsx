@@ -13,7 +13,7 @@ interface PostProps {
 
 const Post: FC<PostProps> = (props) => {
   const { postData } = props;
-  console.log("RENDER POST");
+  console.log("RENDER POST", postData.id);
   return (
     <div className="post_container">
       <div className="post_wrapper">

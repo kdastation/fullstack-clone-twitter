@@ -9,3 +9,7 @@ export const setTokenInLocalStorage = (accessToken: string) => {
 export const removeTokenInLocalStorage = () => {
   localStorage.removeItem("accessToken");
 };
+
+export const determineFileType = (file: File): string => {
+  return file?.type.split("/")[0];
+};

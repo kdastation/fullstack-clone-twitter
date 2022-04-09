@@ -4,13 +4,9 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { refetchOnWindowFocus: false },
-  },
-});
+import { ReactQueryDevtools } from "react-query/devtools";
+import { queryClient } from "./query";
+import { QueryClientProvider } from "react-query";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +14,7 @@ ReactDOM.render(
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <App />
+          <ReactQueryDevtools />
         </QueryClientProvider>
       </BrowserRouter>
     </Provider>
