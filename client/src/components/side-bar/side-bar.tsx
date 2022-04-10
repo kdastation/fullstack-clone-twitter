@@ -6,6 +6,8 @@ import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
 import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
 import { ButtonBlue } from "../../styled-components/btn-blue";
 import "./side-bar.scss";
+import { Link } from "react-router-dom";
+import { RoutesPathNames } from "../../routes/types/routes-path-names";
 
 const stylesIcon: SxProps<Theme> = {
   color: "#71C9F8",
@@ -25,13 +27,17 @@ const SideBar: FC = () => {
             <IconButton>
               <AutoAwesomeMotionIcon />
             </IconButton>
-            <div>Посты</div>
+            <div>
+              <Link to={RoutesPathNames.PROFILE_PAGE}>Главная</Link>
+            </div>
           </li>
           <li className="side_bar_icons__item">
             <IconButton>
               <LocalPostOfficeIcon />
             </IconButton>
-            <div>Мои посты</div>
+            <div>
+              <Link to={RoutesPathNames.POSTS_USER_PAGE}>Мои посты</Link>
+            </div>
           </li>
           <li className="side_bar_icons__item">
             <IconButton>
