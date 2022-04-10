@@ -14,6 +14,19 @@ class PostRepository {
     const posts = Post.findAll();
     return posts;
   }
+
+  static async getPostsUser(userId) {
+    const receviedData = await Post.findAndCountAll({
+      where: {
+        userId,
+      },
+    });
+    const packedPostsData = {
+      count: receviedData.count,
+      posts: receviedData.rows,
+    };
+    return packedPostsData;
+  }
 }
 
 module.exports = PostRepository;

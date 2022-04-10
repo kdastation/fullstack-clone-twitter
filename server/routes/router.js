@@ -12,5 +12,6 @@ router.get("/refresh", UserController.refresh);
 router.get("/users", AuthMiddleware, UserController.getUsers);
 router.get("/posts", AuthMiddleware, postController.getAllPosts);
 router.post("/post", AuthMiddleware, postController.createPost);
+router.get("/posts/me", AuthMiddleware, postController.getPostsUser);
 
 module.exports = router;

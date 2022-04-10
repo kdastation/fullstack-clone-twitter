@@ -22,6 +22,15 @@ class PostContoller {
       next(error);
     }
   }
+  async getPostsUser(request, response, next) {
+    try {
+      const userId = request.user.id;
+      const posts = await PostRepository.getPostsUser(userId);
+      return response.json(posts);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 module.exports = new PostContoller();
