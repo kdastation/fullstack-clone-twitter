@@ -8,7 +8,7 @@ export const validatorsCreatePostForm = yup.object().shape({
       "type",
       "Файл, который вы хотите прикрепить к посту, не является картинкой",
       (value: FileList) => {
-        if (!value?.length) {
+        if (!value || !value?.length) {
           return true;
         }
         const typeFile = determineFileType(value[0]);

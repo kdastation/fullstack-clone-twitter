@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useSubmitData } from "../../../hooks/submit-data-hook";
 import { registrationUser } from "../../../async-thunks/auth-async-thunks";
 import { RoutesPathNames } from "../../../routes/types/routes-path-names";
-import { StyledErrorMessageForm } from "../../../styled-components/styled-error-message-form";
+import { ErrorForm } from "../../notifications/error-form";
 
 interface RegistrationFormFields {
   email: string;
@@ -37,7 +37,9 @@ const RegistrationForm: FC = (props) => {
   return (
     <div>
       {messageError && (
-        <StyledErrorMessageForm>{messageError}</StyledErrorMessageForm>
+        <StyledWrapperInput>
+          <ErrorForm>{messageError}</ErrorForm>
+        </StyledWrapperInput>
       )}
       <form onSubmit={handleSubmit(registerUserSubmit)}>
         <StyledWrapperInput>

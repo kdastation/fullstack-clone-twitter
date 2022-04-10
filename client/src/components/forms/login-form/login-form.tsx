@@ -6,9 +6,9 @@ import { loginUser } from "../../../async-thunks/auth-async-thunks";
 import { useSubmitData } from "../../../hooks/submit-data-hook";
 import { RoutesPathNames } from "../../../routes/types/routes-path-names";
 import { ButtonBlack } from "../../../styled-components/btn-black";
-import { StyledErrorMessageForm } from "../../../styled-components/styled-error-message-form";
 import { StyledTextField } from "../../../styled-components/styled-text-field";
 import { StyledWrapperInput } from "../../../styled-components/styled-wrapper-input";
+import { ErrorForm } from "../../notifications/error-form";
 
 interface LoginFormProps {
   changeTypeForm?: () => void;
@@ -34,7 +34,9 @@ const LoginForm: FC<LoginFormProps> = (props) => {
   return (
     <div>
       {messageError && (
-        <StyledErrorMessageForm>{messageError}</StyledErrorMessageForm>
+        <StyledWrapperInput>
+          <ErrorForm>{messageError}</ErrorForm>
+        </StyledWrapperInput>
       )}
       <form onSubmit={handleSubmit(submitData)}>
         <StyledWrapperInput>

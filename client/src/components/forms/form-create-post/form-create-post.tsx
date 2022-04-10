@@ -1,18 +1,19 @@
 import { FC } from "react";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import "./form-create-post.scss";
 import ImageIcon from "@mui/icons-material/Image";
 import { ButtonBlue } from "../../../styled-components/btn-blue";
 import CircularProgress from "@mui/material/CircularProgress";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useCreatePost } from "../../../query/query-hooks.ts/create-post-mutation";
+import { useCreatePostQuery } from "../../../query/query-hooks.ts/create-post-mutation";
 import { useForm } from "react-hook-form";
 import { useImageFiles } from "../../../hooks/image-files-hook";
-import { Alert, AlertTitle } from "@mui/material";
 import { useContentFieldFormCreatePost } from "../../../hooks/content-field-form-create-post-hook";
 import { ImageForForm } from "./image-for-form/image-for-form";
 import { validatorsCreatePostForm } from "../../../validators/validators-create-post-form";
+import { ErrorsCreatePost } from "./errors-create-post/error-create-post";
+import "./form-create-post.scss";
+import { StylesIcon } from "../../../styles/styles-icon";
 
 export interface FormCreatePostFields {
   content: string;
@@ -21,17 +22,11 @@ export interface FormCreatePostFields {
 
 //TODO : доделать
 const FormCreatePost: FC = () => {
-  const {
-    handleSubmit,
-    register,
-    watch,
-    setValue,
-    reset,
-    formState: { errors },
-  } = useForm<FormCreatePostFields>({
-    mode: "onChange",
-    resolver: yupResolver(validatorsCreatePostForm),
-  });
+  const { handleSubmit, register, watch, setValue, reset, formState } =
+    useForm<FormCreatePostFields>({
+      mode: "onChange",
+      resolver: yupResolver(validatorsCreatePostForm),
+    });
   const imgFile = watch("imgFile");
   const content = watch("content");
   const submitSuccess = () => {
@@ -40,10 +35,16 @@ const FormCreatePost: FC = () => {
     alert("Ваш пост создан!");
   };
   const removeImg = () => {
-    setValue("imgFile", undefined);
+    setValue("imgFile", undefined, {
+      shouldValidate: true,
+    });
     clearImage();
   };
-  const { mutate, error, isError } = useCreatePost(submitSuccess);
+  const {
+    mutate,
+    error: errorsSumbit,
+    isError: isErrorSumbit,
+  } = useCreatePostQuery(submitSuccess);
   const { preview, clearImage } = useImageFiles(imgFile);
   const {
     WordLimitExceeded,
@@ -53,7 +54,6 @@ const FormCreatePost: FC = () => {
   } = useContentFieldFormCreatePost(content);
 
   const createPostSumbit = async (data: FormCreatePostFields) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("content", data.content);
     if (data.imgFile && data.imgFile.length) {
@@ -61,7 +61,6 @@ const FormCreatePost: FC = () => {
     }
     mutate(formData);
   };
-
   return (
     <div>
       <form onSubmit={handleSubmit(createPostSumbit)}>
@@ -88,9 +87,10 @@ const FormCreatePost: FC = () => {
                 id="imgUpload"
                 type="file"
                 hidden
+                accept="image/*"
               />
               <label htmlFor="imgUpload">
-                <ImageIcon />
+                <ImageIcon sx={StylesIcon} />
               </label>
             </li>
             <li className="form_post_footer__icons__item">
@@ -121,16 +121,19 @@ const FormCreatePost: FC = () => {
         </div>
       </form>
       {preview && (
-        <div>
+        <div className="image_for_form_create_post_wrapper">
           <ImageForForm srcImage={preview} clearImage={removeImg} />
         </div>
       )}
-      {(errors?.imgFile || errors?.content) && (
+      {(formState.errors?.imgFile ||
+        formState.errors?.content ||
+        isErrorSumbit) && (
         <div>
-          <Alert severity="error">
-            <AlertTitle>Error</AlertTitle>
-            {errors?.imgFile?.message || errors?.content?.message}
-          </Alert>
+          <ErrorsCreatePost
+            removeFile={removeImg}
+            formState={formState}
+            errorsSumbit={errorsSumbit}
+          />
         </div>
       )}
     </div>

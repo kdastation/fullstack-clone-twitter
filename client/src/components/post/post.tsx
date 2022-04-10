@@ -5,6 +5,8 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { IPost } from "../../types/post/post";
+import { ApiURLNames } from "../../services/api-service/api-url-names";
+import { PostImage } from "./post-image/post-image";
 import "./post.scss";
 
 interface PostProps {
@@ -30,6 +32,11 @@ const Post: FC<PostProps> = (props) => {
             </div>
           </div>
           <div className="post_body_content">{postData.content}</div>
+          {postData?.img && (
+            <div className="post_image_wrapper__post_component">
+              <PostImage srcImage={ApiURLNames.URL_IMAGES + postData.img} />
+            </div>
+          )}
           <div className="post_body_footer">
             <div className="post_body_footer__icon_btn">
               <IconButton>

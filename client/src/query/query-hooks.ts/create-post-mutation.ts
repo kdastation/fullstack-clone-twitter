@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "react-query";
 import { PostApiService } from "../../services/api-service/post-api-service";
 import { IPost } from "../../types/post/post";
 
-export const useCreatePost = (
+export const useCreatePostQuery = (
   callbackOnSuccess: null | (() => void) = null,
   callbackOnError: null | (() => void) = null
 ) => {
