@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { AudioPlayer } from "../../components/audio-player/audio-player";
 import { MemoPost } from "../../components/post/post";
 import { usePostsUserQuery } from "../../query/query-hooks.ts/posts-user-hook";
 
@@ -7,6 +8,9 @@ const PostsUserPage: FC = () => {
 
   return (
     <div>
+      <div>
+        <AudioPlayer />
+      </div>
       {!isError && (
         <div>
           У вас {count} постов
