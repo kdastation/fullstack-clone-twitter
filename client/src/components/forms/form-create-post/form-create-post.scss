@@ -68,4 +68,14 @@
 .image_for_form_create_post_wrapper{
     padding-left: 60px;
 }
-   
+
+
+.emogi_wrapper{
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    z-index: 10;
+}
+.icon__item_emoji{
+    position: relative;
+}

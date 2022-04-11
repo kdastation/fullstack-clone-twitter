@@ -15,8 +15,5 @@ export const validatorsCreatePostForm = yup.object().shape({
         return typeFile === "image";
       }
     ),
-  content: yup
-    .string()
-    .min(5, "Минимальная длина поста 5 символов")
-    .max(280, "Максимальная длина поста 280 символов"),
+  content: yup.string().max(280, "Максимальная длина поста 280 символов"),
 });

@@ -4,13 +4,13 @@ export const useContentFieldFormCreatePost = (content: string | undefined) => {
   const totalCountWordsInContentFieldInPrecent = Math.round(
     (totalCountWordsInContentField / permissibleCountWords) * 100
   );
-  const WordLimitExceeded =
+  const isWordLimitExceeded =
     totalCountWordsInContentField > permissibleCountWords;
 
   return {
     permissibleCountWords,
     totalCountWordsInContentField,
     totalCountWordsInContentFieldInPrecent,
-    WordLimitExceeded,
+    isWordLimitExceeded,
   };
 };

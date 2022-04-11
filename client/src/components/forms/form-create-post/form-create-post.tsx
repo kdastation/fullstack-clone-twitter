@@ -4,16 +4,13 @@ import ImageIcon from "@mui/icons-material/Image";
 import { ButtonBlue } from "../../../styled-components/btn-blue";
 import CircularProgress from "@mui/material/CircularProgress";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useCreatePostQuery } from "../../../query/query-hooks.ts/create-post-mutation";
-import { useForm } from "react-hook-form";
-import { useImageFiles } from "../../../hooks/image-files-hook";
-import { useContentFieldFormCreatePost } from "../../../hooks/content-field-form-create-post-hook";
-import { ImageForForm } from "./image-for-form/image-for-form";
-import { validatorsCreatePostForm } from "../../../validators/validators-create-post-form";
 import { ErrorsCreatePost } from "./errors-create-post/error-create-post";
-import "./form-create-post.scss";
 import { StylesIcon } from "../../../styles/styles-icon";
+import { Picker } from "emoji-mart";
+import { ImageForForm } from "./image-for-form/image-for-form";
+import { useFormCreatPostMain } from "../../../hooks/form-create-post-main-hook";
+import "emoji-mart/css/emoji-mart.css";
+import "./form-create-post.scss";
 
 export interface FormCreatePostFields {
   content: string;
@@ -22,45 +19,23 @@ export interface FormCreatePostFields {
 
 //TODO : доделать
 const FormCreatePost: FC = () => {
-  const { handleSubmit, register, watch, setValue, reset, formState } =
-    useForm<FormCreatePostFields>({
-      mode: "onChange",
-      resolver: yupResolver(validatorsCreatePostForm),
-    });
-  const imgFile = watch("imgFile");
-  const content = watch("content");
-  const submitSuccess = () => {
-    reset();
-    clearImage();
-    alert("Ваш пост создан!");
-  };
-  const removeImg = () => {
-    setValue("imgFile", undefined, {
-      shouldValidate: true,
-    });
-    clearImage();
-  };
   const {
-    mutate,
-    error: errorsSumbit,
-    isError: isErrorSumbit,
-  } = useCreatePostQuery(submitSuccess);
-  const { preview, clearImage } = useImageFiles(imgFile);
-  const {
-    WordLimitExceeded,
+    isWordLimitExceeded,
+    errorsSumbit,
+    formState,
     permissibleCountWords,
     totalCountWordsInContentField,
     totalCountWordsInContentFieldInPrecent,
-  } = useContentFieldFormCreatePost(content);
-
-  const createPostSumbit = async (data: FormCreatePostFields) => {
-    const formData = new FormData();
-    formData.append("content", data.content);
-    if (data.imgFile && data.imgFile.length) {
-      formData.append("img", data.imgFile[0]);
-    }
-    mutate(formData);
-  };
+    iSVisibleEmoji,
+    isErrorSumbit,
+    preview,
+    createPostSumbit,
+    handleVisibleEmoji,
+    register,
+    removeImg,
+    setEmoji,
+    handleSubmit,
+  } = useFormCreatPostMain();
   return (
     <div>
       <form onSubmit={handleSubmit(createPostSumbit)}>
@@ -93,8 +68,13 @@ const FormCreatePost: FC = () => {
                 <ImageIcon sx={StylesIcon} />
               </label>
             </li>
-            <li className="form_post_footer__icons__item">
-              <InsertEmoticonIcon />
+            <li className="form_post_footer__icons__item icon__item_emoji">
+              <InsertEmoticonIcon onClick={handleVisibleEmoji} />
+              {iSVisibleEmoji && (
+                <div className="emogi_wrapper">
+                  <Picker title="Смайлики" set="facebook" onClick={setEmoji} />
+                </div>
+              )}
             </li>
           </ul>
           <div className="form_post_footer__right">
@@ -108,15 +88,17 @@ const FormCreatePost: FC = () => {
               </span>
               <CircularProgress
                 variant="determinate"
-                color={!WordLimitExceeded ? "primary" : "error"}
+                color={!isWordLimitExceeded ? "primary" : "error"}
                 value={
-                  WordLimitExceeded
+                  isWordLimitExceeded
                     ? 100
                     : totalCountWordsInContentFieldInPrecent
                 }
               />
             </div>
-            <ButtonBlue type="submit">Твитнуть</ButtonBlue>
+            <ButtonBlue disabled={formState.isSubmitting} type="submit">
+              Твитнуть
+            </ButtonBlue>
           </div>
         </div>
       </form>

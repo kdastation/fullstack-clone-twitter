@@ -15,4 +15,7 @@ export const ButtonBlue = styled("button")({
     backgroundColor: "white",
     border: "1px solid rgb(29, 161, 242)",
   },
+  "&: disabled": {
+    backgroundColor: "gray",
+  },
 });
