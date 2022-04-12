@@ -1,0 +1,19 @@
+.track_wrapper{
+    margin-bottom: 20px;
+}
+
+.track{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    &_left{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    &__name{
+        font-size: 18px;
+        font-weight: 600;
+    }
+}

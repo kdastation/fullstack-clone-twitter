@@ -43,7 +43,9 @@ const SideBar: FC = () => {
             <IconButton>
               <MusicNoteIcon />
             </IconButton>
-            <div>Моя музыка</div>
+            <div>
+              <Link to={RoutesPathNames.TRACKS_USER_PAGE}>Моя музыка</Link>
+            </div>
           </li>
         </ul>
         <div>
