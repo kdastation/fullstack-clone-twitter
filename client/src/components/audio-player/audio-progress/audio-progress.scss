@@ -1,0 +1,17 @@
+.audio_progress{
+    display: flex;
+    align-items: center;
+    &__range_wrapper{
+        flex-grow: 1;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+    }
+    &__values{
+        font-size: 20px;
+        font-weight: 700;
+        margin-left: 10px;
+        color: black;
+    }
+}
+

@@ -1,0 +1,29 @@
+.audio_player_wrapper{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    padding:  0 30px;
+    background-color: rgb(29, 161, 242);
+}
+
+.audio_player_controls{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &__play{
+        flex-basis: 200px;
+        flex-grow: 0;
+        flex-shrink: 0;
+
+    }
+   
+    &__volume{
+      
+    }
+
+    &__time{
+        margin-left: auto;
+        transform: translateX(-50%)
+    }
+}

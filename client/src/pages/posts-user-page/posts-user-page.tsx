@@ -8,9 +8,6 @@ const PostsUserPage: FC = () => {
 
   return (
     <div>
-      <div>
-        <AudioPlayer />
-      </div>
       {!isError && (
         <div>
           У вас {count} постов

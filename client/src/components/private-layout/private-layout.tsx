@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { AudioPlayer } from "../audio-player/audio-player";
 import { SideBar } from "../side-bar/side-bar";
 import "./private-layout.scss";
 
@@ -12,6 +13,7 @@ const PrivateLayout = () => {
         <Outlet />
       </div>
       <div className="layout_container__info">asdasd</div>
+      <AudioPlayer />
     </div>
   );
 };
