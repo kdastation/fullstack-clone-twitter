@@ -6,6 +6,7 @@ interface initialStatePlayer {
   isPause: boolean;
   currentTime: number;
   duration: number;
+  volume: number;
 }
 
 const inititalState: initialStatePlayer = {
@@ -13,6 +14,7 @@ const inititalState: initialStatePlayer = {
   isPause: true,
   currentTime: 0,
   duration: 0,
+  volume: 40,
 };
 
 export const playerReducer = createSlice({
@@ -36,8 +38,17 @@ export const playerReducer = createSlice({
     setCurrentTime(state, action: PayloadAction<number>) {
       state.currentTime = action.payload;
     },
+    setVolume(state, action: PayloadAction<number>) {
+      state.volume = action.payload;
+    },
   },
 });
 
-export const { pause, play, setActiveTrack, setCurrentTime, setDuration } =
-  playerReducer.actions;
+export const {
+  pause,
+  play,
+  setActiveTrack,
+  setCurrentTime,
+  setDuration,
+  setVolume,
+} = playerReducer.actions;
