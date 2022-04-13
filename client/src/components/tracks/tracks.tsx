@@ -1,16 +1,16 @@
 import { FC } from "react";
+import { useTracksUserQuery } from "../../query/query-hooks.ts/tracks-user-hook";
 import { Track } from "./track/track";
 
 const Tracks: FC = () => {
-  const data = [
-    { id: 1, name: "Qwe", audio: "qweqwe.mp3" },
-    { id: 2, name: "zxc", audio: "zxc.mp3" },
-  ];
+  const { isLoading, tracks, error } = useTracksUserQuery();
+  console.log(tracks);
   return (
     <div>
-      {data.map((track) => {
-        return <Track key={track.id} track={track} />;
-      })}
+      {tracks &&
+        tracks.map((track) => {
+          return <Track key={track.id} track={track} />;
+        })}
     </div>
   );
 };

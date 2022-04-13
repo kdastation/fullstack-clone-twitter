@@ -1,0 +1,10 @@
+.audio_upload_controll{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    &__text{
+        font-size: 18px;
+        font-weight: 700;
+    }
+}

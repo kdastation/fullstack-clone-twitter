@@ -10,4 +10,6 @@ export enum ApiURLNames {
   POST = "/post",
   POSTS = "/posts",
   POSTS_USER = "/posts/me",
+  TRACKS_USER = "/tracks/me",
+  TRACK = "/track",
 }
