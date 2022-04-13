@@ -18,14 +18,24 @@ const Post = sequelize.define("post", {
   img: { type: DataTypes.STRING, allowNull: true },
 });
 
+const Track = sequelize.define("track", {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  name: { type: DataTypes.STRING },
+  audio: { type: DataTypes.STRING, allowNull: false },
+});
+
 User.hasMany(Token);
 Token.belongsTo(User);
 
 User.hasMany(Post);
 Post.belongsTo(User);
 
+User.hasMany(Track);
+Track.belongsTo(User);
+
 module.exports = {
   User,
   Token,
   Post,
+  Track,
 };

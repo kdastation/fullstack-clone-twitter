@@ -1,4 +1,3 @@
-const path = require("path");
 const PostRepository = require("../repository/post-repository");
 const FileUtils = require("../utils/file-utils");
 
@@ -7,7 +6,7 @@ class PostService {
     let fileNameImg = null;
     if (img) {
       fileNameImg = FileUtils.generatePathName("jpg");
-      this._saveImgPost(img, fileNameImg);
+      FileUtils.saveFile("img", fileNameImg, img);
     }
     const newPost = await PostRepository.createPost(
       content,
@@ -15,10 +14,6 @@ class PostService {
       userId
     );
     return newPost;
-  }
-  _saveImgPost(img, fileName) {
-    // eslint-disable-next-line no-undef
-    img.mv(path.resolve(__dirname, "..", "static", "img", fileName));
   }
 }
 
