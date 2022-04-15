@@ -1,7 +1,9 @@
 .post_container{
     padding: 10px;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    transition: all 0.4s;
+    &:hover{
+        z-index: 100;
+    }
 }
 
 .post_wrapper{

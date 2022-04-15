@@ -1,15 +1,14 @@
 import { FC } from "react";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleFilledIcon from "@mui/icons-material/PauseCircleFilled";
-import { IconButton, SxProps, Theme } from "@mui/material";
+import { SxProps, Theme } from "@mui/material";
 import { AudioProgress } from "./audio-progress/audio-progress";
 import { useAudioPlayer } from "../../hooks/audio-player-hook";
 import "./audio-player.scss";
 
 const stylesIconPlay: SxProps<Theme> = {
-  fontSize: "60px",
+  fontSize: "30px",
   cursor: "pointer",
-  color: "blue",
 };
 
 const AudioPlayer: FC = () => {
@@ -33,22 +32,17 @@ const AudioPlayer: FC = () => {
     <div className="audio_player_wrapper">
       <audio ref={audio} hidden></audio>
       <div className="audio_player_controls">
-        <div className="audio_player_controls__play">
-          <IconButton onClick={togglePlayPause}>
+        <div className="audio_player_controls_play">
+          <div onClick={togglePlayPause}>
             {isPause ? (
-              <PlayCircleIcon sx={stylesIconPlay} />
+              <PlayCircleIcon color="primary" sx={stylesIconPlay} />
             ) : (
-              <PauseCircleFilledIcon sx={stylesIconPlay} />
+              <PauseCircleFilledIcon color="primary" sx={stylesIconPlay} />
             )}
-          </IconButton>
-        </div>
-        <div className="audio_player_controls__volume">
-          <AudioProgress
-            type="volume"
-            left={volume}
-            right={100}
-            onChange={changeVolume}
-          />
+          </div>
+          <div className="audio_player_controls_play__track_name">
+            {activeTrack.name}
+          </div>
         </div>
         <div className="audio_player_controls__time">
           <AudioProgress
@@ -56,6 +50,15 @@ const AudioPlayer: FC = () => {
             left={currentTime}
             right={duration}
             onChange={changeCurrentTime}
+          />
+        </div>
+
+        <div className="audio_player_controls__volume">
+          <AudioProgress
+            type="volume"
+            left={volume}
+            right={100}
+            onChange={changeVolume}
           />
         </div>
       </div>

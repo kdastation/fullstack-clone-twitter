@@ -9,6 +9,10 @@
         flex-basis: 250px;
         flex-grow: 0;
         flex-shrink: 0;
+        &_items{
+            position: sticky;
+            top: 0;
+        }
     }
     .layout_container__body{
         flex-grow: 1;

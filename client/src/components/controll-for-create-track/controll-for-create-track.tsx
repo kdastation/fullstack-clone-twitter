@@ -1,6 +1,8 @@
+import { IconButton } from "@mui/material";
 import { FC } from "react";
 import { useMode } from "../../hooks/mode-hook";
 import { CustomModal } from "../custom-modal/custom-modal";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { FormCreateTrack } from "../forms/form-create-track/form-create-track";
 import "./controll-for-create-track.scss";
 
@@ -13,7 +15,9 @@ const ControllForCreateTrack: FC = () => {
   return (
     <div>
       <div>
-        <button onClick={onOpenModal}>Добавить трек</button>
+        <IconButton onClick={onOpenModal}>
+          <AddCircleIcon color="primary" />
+        </IconButton>
       </div>
       {isVisibleModal && (
         <CustomModal isActiveModal={isVisibleModal} onCloseModal={onCloseModal}>

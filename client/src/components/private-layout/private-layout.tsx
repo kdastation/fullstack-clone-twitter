@@ -1,19 +1,22 @@
+import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import { AudioPlayer } from "../audio-player/audio-player";
 import { SideBar } from "../side-bar/side-bar";
 import "./private-layout.scss";
 
-const PrivateLayout = () => {
+const PrivateLayout: FC = () => {
   return (
     <div className="layout_container">
       <div className="layout_container__side_bar">
-        <SideBar />
+        <div className="layout_container__side_bar_items">
+          <AudioPlayer />
+          <SideBar />
+        </div>
       </div>
       <div className="layout_container__body">
         <Outlet />
       </div>
       <div className="layout_container__info">asdasd</div>
-      <AudioPlayer />
     </div>
   );
 };

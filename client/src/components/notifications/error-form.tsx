@@ -6,7 +6,7 @@ const ErrorForm: FC = (props) => {
   return (
     <div>
       <Alert severity="error">
-        <AlertTitle>Error</AlertTitle>
+        <AlertTitle>Ошибка!</AlertTitle>
         {children}
       </Alert>
     </div>

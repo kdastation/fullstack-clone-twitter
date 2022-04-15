@@ -15,7 +15,11 @@ const AudioProgress: FC<AudioProgressProps> = (props) => {
   return (
     <div className="audio_progress">
       <div className="audio_progress__range_wrapper">
-        {type === "volume" ? <VolumeUpIcon /> : <AccessTimeIcon />}
+        {type === "volume" ? (
+          <VolumeUpIcon color="primary" />
+        ) : (
+          <AccessTimeIcon color="primary" />
+        )}
         <input
           type="range"
           min={0}
@@ -23,9 +27,6 @@ const AudioProgress: FC<AudioProgressProps> = (props) => {
           value={left}
           onChange={onChange}
         />
-      </div>
-      <div className="audio_progress__values">
-        {left}/{right}
       </div>
     </div>
   );

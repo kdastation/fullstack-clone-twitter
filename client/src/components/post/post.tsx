@@ -1,4 +1,4 @@
-import { IconButton } from "@mui/material";
+import { IconButton, Paper } from "@mui/material";
 import { FC, memo } from "react";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import ReplyIcon from "@mui/icons-material/Reply";
@@ -17,52 +17,54 @@ const Post: FC<PostProps> = (props) => {
   const { postData } = props;
   console.log("RENDER POST", postData.id);
   return (
-    <div className="post_container">
-      <div className="post_wrapper">
-        <div className="post_left">
-          <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-            alt=""
-          />
-        </div>
-        <div className="post_body">
-          <div className="post_body_header">
-            <div className="post_body_header__author">
-              <b>FavoriteBorderIcon</b>
-            </div>
+    <Paper variant="outlined">
+      <div className="post_container">
+        <div className="post_wrapper">
+          <div className="post_left">
+            <img
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+              alt=""
+            />
           </div>
-          <div className="post_body_content">{postData.content}</div>
-          {postData?.img && (
-            <div className="post_image_wrapper__post_component">
-              <PostImage srcImage={ApiURLNames.URL_IMAGES + postData.img} />
+          <div className="post_body">
+            <div className="post_body_header">
+              <div className="post_body_header__author">
+                <b>FavoriteBorderIcon</b>
+              </div>
             </div>
-          )}
-          <div className="post_body_footer">
-            <div className="post_body_footer__icon_btn">
-              <IconButton>
-                <ChatBubbleIcon color="primary" />
-              </IconButton>
-              <span className="post_body_footer__icon_btn__number">1</span>
-            </div>
-            <div className="post_body_footer__icon_btn">
-              <IconButton>
-                <RepeatIcon color="primary" />
-              </IconButton>
-            </div>
-            <div className="post_body_footer__icon_btn">
-              <IconButton>
-                <FavoriteBorderIcon color="primary" />
-              </IconButton>
-            </div>
-            <div className="post_body_footer__icon_btn">
-              <IconButton>
-                <ReplyIcon color="primary" />
-              </IconButton>
+            <div className="post_body_content">{postData.content}</div>
+            {postData?.img && (
+              <div className="post_image_wrapper__post_component">
+                <PostImage srcImage={ApiURLNames.URL_IMAGES + postData.img} />
+              </div>
+            )}
+            <div className="post_body_footer">
+              <div className="post_body_footer__icon_btn">
+                <IconButton>
+                  <ChatBubbleIcon color="primary" />
+                </IconButton>
+                <span className="post_body_footer__icon_btn__number">1</span>
+              </div>
+              <div className="post_body_footer__icon_btn">
+                <IconButton>
+                  <RepeatIcon color="primary" />
+                </IconButton>
+              </div>
+              <div className="post_body_footer__icon_btn">
+                <IconButton>
+                  <FavoriteBorderIcon color="primary" />
+                </IconButton>
+              </div>
+              <div className="post_body_footer__icon_btn">
+                <IconButton>
+                  <ReplyIcon color="primary" />
+                </IconButton>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Paper>
   );
 };
 
