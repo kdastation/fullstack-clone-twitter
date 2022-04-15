@@ -4,7 +4,7 @@ import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import AudioFileIcon from "@mui/icons-material/AudioFile";
 import { Button, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { useCreateTrackQuery } from "../../../query/query-hooks.ts/create-track-hook";
+import { useCreateTrackQuery } from "../../../query/query-hooks/create-track-hook";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validatorsFormCreateTrack } from "../../../validators/validators-create-track";
 import { ErrorForm } from "../../notifications/error-form";

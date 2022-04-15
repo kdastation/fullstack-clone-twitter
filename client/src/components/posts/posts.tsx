@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { usePostsQuery } from "../../query/query-hooks.ts/posts-hook";
+import { usePostsQuery } from "../../query/query-hooks/posts-hook";
 import { MemoPost } from "../post/post";
 
 const Posts: FC = () => {

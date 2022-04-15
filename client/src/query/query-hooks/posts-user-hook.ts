@@ -1,4 +1,4 @@
-import { PostApiService } from "./../../services/api-service/post-api-service";
+import { PostApiService } from "../../services/api-service/post-api-service";
 import { useQuery } from "react-query";
 export const usePostsUserQuery = () => {
   const { isLoading, data, error, isError } = useQuery(

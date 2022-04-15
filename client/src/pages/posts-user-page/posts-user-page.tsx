@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { AudioPlayer } from "../../components/audio-player/audio-player";
 import { MemoPost } from "../../components/post/post";
-import { usePostsUserQuery } from "../../query/query-hooks.ts/posts-user-hook";
+import { usePostsUserQuery } from "../../query/query-hooks/posts-user-hook";
 
 const PostsUserPage: FC = () => {
   const { isLoading, error, posts, count, isError } = usePostsUserQuery();

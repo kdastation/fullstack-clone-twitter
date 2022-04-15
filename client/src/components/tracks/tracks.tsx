@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTracksUserQuery } from "../../query/query-hooks.ts/tracks-user-hook";
+import { useTracksUserQuery } from "../../query/query-hooks/tracks-user-hook";
 import { Track } from "./track/track";
 
 const Tracks: FC = () => {

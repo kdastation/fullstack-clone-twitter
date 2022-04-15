@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useCreatePostQuery } from "../query/query-hooks.ts/create-post-mutation";
+import { useCreatePostQuery } from "../query/query-hooks/create-post-mutation";
 import { useContentFieldFormCreatePost } from "./content-field-form-create-post-hook";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validatorsCreatePostForm } from "../validators/validators-create-post-form";
