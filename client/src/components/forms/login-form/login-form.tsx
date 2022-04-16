@@ -55,7 +55,7 @@ const LoginForm: FC<LoginFormProps> = (props) => {
           />
         </StyledWrapperInput>
         <ButtonBlack disabled={formState.isSubmitting} type="submit">
-          <div>Логин</div>
+          <div data-testid="login">Логин</div>
         </ButtonBlack>
       </form>
     </div>

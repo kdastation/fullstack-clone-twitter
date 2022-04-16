@@ -35,9 +35,17 @@ const AudioPlayer: FC = () => {
         <div className="audio_player_controls_play">
           <div onClick={togglePlayPause}>
             {isPause ? (
-              <PlayCircleIcon color="primary" sx={stylesIconPlay} />
+              <PlayCircleIcon
+                data-testid="play_icon"
+                color="primary"
+                sx={stylesIconPlay}
+              />
             ) : (
-              <PauseCircleFilledIcon color="primary" sx={stylesIconPlay} />
+              <PauseCircleFilledIcon
+                data-testid="pause_icon"
+                color="primary"
+                sx={stylesIconPlay}
+              />
             )}
           </div>
           <div className="audio_player_controls_play__track_name">

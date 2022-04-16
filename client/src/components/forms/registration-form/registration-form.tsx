@@ -29,8 +29,8 @@ const RegistrationForm: FC = (props) => {
   );
   const { submitData: registerUserSubmit, messageError } =
     useSubmitData<RegistrationFormFields>(
-      async (data: RegistrationFormFields) => {
-        await dispatch(registrationUser(data.email, data.password));
+      async ({ email, password }: RegistrationFormFields) => {
+        await dispatch(registrationUser(email, password));
         navigation(RoutesPathNames.PROFILE_PAGE);
       }
     );
@@ -44,6 +44,7 @@ const RegistrationForm: FC = (props) => {
       <form onSubmit={handleSubmit(registerUserSubmit)}>
         <StyledWrapperInput>
           <StyledTextField
+            data-testid="email"
             error={!!formState.errors?.email}
             helperText={formState.errors.email?.message}
             label="email"
@@ -55,6 +56,7 @@ const RegistrationForm: FC = (props) => {
             error={!!formState.errors?.password?.message}
             helperText={formState.errors?.password?.message}
             type="password"
+            data-testid="password"
             label="password"
             {...register("password")}
           />
@@ -64,11 +66,16 @@ const RegistrationForm: FC = (props) => {
             error={!!formState.errors?.confirmPassword?.message}
             helperText={formState.errors?.confirmPassword?.message}
             type="password"
+            data-testid="confirmPassword"
             label="confirmPassword"
             {...register("confirmPassword")}
           />
         </StyledWrapperInput>
-        <ButtonBlack disabled={formState.isSubmitting} type="submit">
+        <ButtonBlack
+          data-testid="registerBtn"
+          disabled={formState.isSubmitting}
+          type="submit"
+        >
           <div>Зарегистроваться</div>
         </ButtonBlack>
       </form>
