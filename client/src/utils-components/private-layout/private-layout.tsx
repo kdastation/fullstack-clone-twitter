@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
-import { AudioPlayer } from "../audio-player/audio-player";
-import { SideBar } from "../side-bar/side-bar";
+import { AudioPlayer } from "../../components/audio-player/audio-player";
+import { SideBar } from "../../components/side-bar/side-bar";
 import "./private-layout.scss";
 
 const PrivateLayout: FC = () => {

@@ -7,9 +7,14 @@ const rootReducer = {
   [playerReducer.name]: playerReducer.reducer,
 };
 
-export const store = configureStore({
-  reducer: rootReducer,
-});
+export const createReduxStore = (initialState = {}) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState: initialState,
+  });
+};
+
+export const store = createReduxStore();
 
 export type rootState = ReturnType<typeof store.getState>;
 export type appDispatch = typeof store.dispatch;

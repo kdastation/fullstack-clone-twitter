@@ -2,7 +2,7 @@ import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { RegistrationForm } from "../../components/forms/registration-form/registration-form";
 import { useSubmitData } from "../../hooks/submit-data-hook";
-import { RenderWithReduxAndRouter } from "../heplers/render-with-redux";
+import { RenderWithReduxAndRouter } from "../heplers/render-with-redux-and-router";
 import userEvent from "@testing-library/user-event";
 import { MessageErrorValidate } from "../../validators/message-error-validate";
 

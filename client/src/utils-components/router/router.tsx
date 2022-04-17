@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { privateRoutes } from "../../routes/private-routes";
 import { publicRoutes } from "../../routes/public-routes";
 import { RoutesPathNames } from "../../routes/types/routes-path-names";
-import { PrivateLayout } from "../../components/private-layout/private-layout";
+import { PrivateLayout } from "../private-layout/private-layout";
 
 const Router: FC = () => {
   const isAuth = useSelector(AuthSelector.getAuthStatus);

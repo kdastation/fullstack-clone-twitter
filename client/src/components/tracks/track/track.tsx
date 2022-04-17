@@ -46,9 +46,9 @@ const Track: FC<TrackProps> = (props) => {
           <div className="track_left">
             <div>
               {isPlayingActiveTrack ? (
-                <PauseIcon onClick={stopTrack} />
+                <PauseIcon data-testid="stopTrack" onClick={stopTrack} />
               ) : (
-                <PlayArrowIcon onClick={runTrack} />
+                <PlayArrowIcon data-testid="runTrack" onClick={runTrack} />
               )}
             </div>
             <div className="track__name">{track.name}</div>

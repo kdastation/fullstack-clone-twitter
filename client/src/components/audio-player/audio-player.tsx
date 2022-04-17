@@ -33,22 +33,25 @@ const AudioPlayer: FC = () => {
       <audio ref={audio} hidden></audio>
       <div className="audio_player_controls">
         <div className="audio_player_controls_play">
-          <div onClick={togglePlayPause}>
+          <div data-testid="togglePlayPause" onClick={togglePlayPause}>
             {isPause ? (
               <PlayCircleIcon
-                data-testid="play_icon"
+                data-testid="player_icon_play"
                 color="primary"
                 sx={stylesIconPlay}
               />
             ) : (
               <PauseCircleFilledIcon
-                data-testid="pause_icon"
+                data-testid="player_icon_pause"
                 color="primary"
                 sx={stylesIconPlay}
               />
             )}
           </div>
-          <div className="audio_player_controls_play__track_name">
+          <div
+            data-testid="player_track_name"
+            className="audio_player_controls_play__track_name"
+          >
             {activeTrack.name}
           </div>
         </div>
