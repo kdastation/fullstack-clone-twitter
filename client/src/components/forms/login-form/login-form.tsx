@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../async-thunks/auth-async-thunks";
 import { useSubmitData } from "../../../hooks/submit-data-hook";
 import { RoutesPathNames } from "../../../routes/types/routes-path-names";
-import { ButtonBlack } from "../../../styled-components/btn-black";
+import { ButtonBlack } from "../../../styled-components/buttons/btn-black";
 import { StyledTextField } from "../../../styled-components/styled-text-field";
 import { StyledWrapperInput } from "../../../styled-components/styled-wrapper-input";
 import { ErrorForm } from "../../notifications/error-form";

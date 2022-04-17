@@ -1,4 +1,4 @@
-import { SignInPage } from "../pages/signIn-page/singIn-page";
+import { SignInPage } from "../pages/sign-in-page/sing-in-page";
 import { IRoute } from "./types/route";
 import { RoutesPathNames } from "./types/routes-path-names";
 

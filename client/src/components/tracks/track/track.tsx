@@ -1,5 +1,5 @@
 import { Paper } from "@mui/material";
-import { FC } from "react";
+import { FC, memo } from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import PauseIcon from "@mui/icons-material/Pause";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -16,8 +16,6 @@ import { PlayerSelector } from "../../../redux/selectors/player-selector";
 interface TrackProps {
   track: ITrack;
 }
-
-//TODO: Доделать
 
 const Track: FC<TrackProps> = (props) => {
   const { track } = props;
@@ -62,4 +60,6 @@ const Track: FC<TrackProps> = (props) => {
   );
 };
 
-export { Track };
+const MemoTrack = memo(Track);
+
+export { Track, MemoTrack };

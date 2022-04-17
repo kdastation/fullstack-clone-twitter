@@ -1,15 +1,15 @@
 import { FC } from "react";
-import "./sign-in-page.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
-import { ButtonBlue } from "../../styled-components/btn-blue";
-import { ButtonWhite } from "../../styled-components/btn-white";
+import { ButtonBlue } from "../../styled-components/buttons/btn-blue";
+import { ButtonWhite } from "../../styled-components/buttons/btn-white";
 import { CustomModal } from "../../components/custom-modal/custom-modal";
 import { useMode } from "../../hooks/mode-hook";
 import { RegistrationForm } from "../../components/forms/registration-form/registration-form";
 import { LoginForm } from "../../components/forms/login-form/login-form";
+import "./sign-in-page.scss";
 
 const SignInPage: FC = () => {
   const {
@@ -72,7 +72,7 @@ const SignInPage: FC = () => {
           isActiveModal={isActiveModalRegister}
           onCloseModal={onCloseModalRegister}
         >
-          <div style={{ padding: "60px", minWidth: "350px" }}>
+          <div className="sing_in_modal_wrapper">
             <div>
               <RegistrationForm />
             </div>
@@ -84,7 +84,7 @@ const SignInPage: FC = () => {
           isActiveModal={isActiveModalLogin}
           onCloseModal={onCloseModalLogin}
         >
-          <div style={{ padding: "60px", minWidth: "350px" }}>
+          <div className="sing_in_modal_wrapper">
             <div>
               <LoginForm />
             </div>

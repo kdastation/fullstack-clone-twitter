@@ -1,17 +1,13 @@
 import { FC } from "react";
 import { useTracksUserQuery } from "../../query/query-hooks/tracks-user-hook";
-import { Track } from "./track/track";
+import { renderTrack } from "../../services/component-render-service/render-track";
+import { List } from "../../utils-components/list/list";
 
 const Tracks: FC = () => {
   const { isLoading, tracks, error } = useTracksUserQuery();
   console.log(tracks);
   return (
-    <div>
-      {tracks &&
-        tracks.map((track) => {
-          return <Track key={track.id} track={track} />;
-        })}
-    </div>
+    <div>{tracks && <List items={tracks} renderItem={renderTrack} />}</div>
   );
 };
 

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import ImageIcon from "@mui/icons-material/Image";
-import { ButtonBlue } from "../../../styled-components/btn-blue";
+import { ButtonBlue } from "../../../styled-components/buttons/btn-blue";
 import CircularProgress from "@mui/material/CircularProgress";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { ErrorsCreatePost } from "./errors-create-post/error-create-post";

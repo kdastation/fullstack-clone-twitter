@@ -4,7 +4,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import LocalPostOfficeIcon from "@mui/icons-material/LocalPostOffice";
 import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
-import { ButtonBlue } from "../../styled-components/btn-blue";
+import { ButtonBlue } from "../../styled-components/buttons/btn-blue";
 import "./side-bar.scss";
 import { Link } from "react-router-dom";
 import { RoutesPathNames } from "../../routes/types/routes-path-names";

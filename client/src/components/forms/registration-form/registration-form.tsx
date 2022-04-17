@@ -2,7 +2,7 @@ import { StyledTextField } from "../../../styled-components/styled-text-field";
 import { FC } from "react";
 import { StyledWrapperInput } from "../../../styled-components/styled-wrapper-input";
 import { useForm } from "react-hook-form";
-import { ButtonBlack } from "../../../styled-components/btn-black";
+import { ButtonBlack } from "../../../styled-components/buttons/btn-black";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validatorsRegistrationForm } from "../../../validators/validators-registration-form";
 import { useDispatch } from "react-redux";
