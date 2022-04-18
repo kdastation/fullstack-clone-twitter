@@ -4,11 +4,9 @@ import { ButtonBlue } from "../../../styled-components/buttons/btn-blue";
 import CircularProgress from "@mui/material/CircularProgress";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { ErrorsCreatePost } from "./errors-create-post/error-create-post";
-import { Picker } from "emoji-mart";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { ImageForForm } from "./image-for-form/image-for-form";
 import { useFormCreatPostMain } from "../../../hooks/form-create-post-main-hook";
-import "emoji-mart/css/emoji-mart.css";
 import "./form-create-post.scss";
 
 export interface FormCreatePostFields {
@@ -18,20 +16,17 @@ export interface FormCreatePostFields {
 
 const FormCreatePost: FC = () => {
   const {
-    isWordLimitExceeded,
     errorsSumbit,
     formState,
     permissibleCountWords,
     totalCountWordsInContentField,
     totalCountWordsInContentFieldInPrecent,
-    iSVisibleEmoji,
+    isWordLimitExceeded,
     isErrorSumbit,
     preview,
     createPostSumbit,
-    handleVisibleEmoji,
     register,
     removeImg,
-    setEmoji,
     handleSubmit,
   } = useFormCreatPostMain();
   return (
@@ -67,15 +62,7 @@ const FormCreatePost: FC = () => {
               </label>
             </li>
             <li className="form_post_footer__icons__item icon__item_emoji">
-              <InsertEmoticonIcon
-                color="primary"
-                onClick={handleVisibleEmoji}
-              />
-              {iSVisibleEmoji && (
-                <div className="emogi_wrapper">
-                  <Picker title="Смайлики" set="facebook" onClick={setEmoji} />
-                </div>
-              )}
+              <InsertEmoticonIcon color="primary" />
             </li>
           </ul>
           <div className="form_post_footer__right">

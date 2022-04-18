@@ -1,4 +1,8 @@
-const { Post } = require("../models/models");
+const { Post, User } = require("../models/models");
+
+const includeUser = {
+  include: { model: User, attributes: ["email"] },
+};
 
 class PostRepository {
   static async createPost(content, fileNameImg, userId) {
@@ -7,11 +11,26 @@ class PostRepository {
       img: fileNameImg,
       userId,
     });
-    return newPost;
+    const newPostWithAllInformation = await PostRepository.getPostById(
+      newPost.id
+    );
+    return newPostWithAllInformation;
+  }
+
+  static async getPostById(id) {
+    const post = await Post.findOne({
+      where: {
+        id,
+      },
+      ...includeUser,
+    });
+    return post;
   }
 
   static async getAllPosts() {
-    const posts = Post.findAll();
+    const posts = Post.findAll({
+      ...includeUser,
+    });
     return posts;
   }
 
@@ -20,6 +39,7 @@ class PostRepository {
       where: {
         userId,
       },
+      ...includeUser,
     });
     const packedPostsData = {
       count: receviedData.count,

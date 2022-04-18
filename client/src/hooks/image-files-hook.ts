@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { determineFileType } from "../utils/utils";
 
 export const useImageFiles = (file: FileList | undefined) => {
@@ -15,13 +15,13 @@ export const useImageFiles = (file: FileList | undefined) => {
     setPreview(null);
   };
 
-  const showImage = (img: File) => {
+  const showImage = useCallback((img: File) => {
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       setPreview(fileReader.result as string);
     };
     fileReader.readAsDataURL(img);
-  };
+  }, []);
   return {
     preview,
     clearImage,

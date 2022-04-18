@@ -28,7 +28,7 @@ const Post: FC<PostProps> = (props) => {
           <div className="post_body">
             <div className="post_body_header">
               <div className="post_body_header__author">
-                <b>FavoriteBorderIcon</b>
+                <b>{postData.user?.email}</b>
               </div>
             </div>
             <div className="post_body_content">{postData.content}</div>

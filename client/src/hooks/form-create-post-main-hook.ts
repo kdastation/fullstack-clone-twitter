@@ -3,7 +3,6 @@ import { useCreatePostQuery } from "../query/query-hooks/create-post-mutation";
 import { useContentFieldFormCreatePost } from "./content-field-form-create-post-hook";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validatorsCreatePostForm } from "../validators/validators-create-post-form";
-import { useToggle } from "./toggle-hook";
 import { useImageFiles } from "./image-files-hook";
 export interface FormCreatePostFields {
   content: string;
@@ -15,6 +14,9 @@ export const useFormCreatPostMain = () => {
     useForm<FormCreatePostFields>({
       mode: "onBlur",
       reValidateMode: "onBlur",
+      defaultValues: {
+        content: "",
+      },
       resolver: yupResolver(validatorsCreatePostForm),
     });
 
@@ -41,9 +43,6 @@ export const useFormCreatPostMain = () => {
     totalCountWordsInContentFieldInPrecent,
   } = useContentFieldFormCreatePost(content);
 
-  const { handleToggle: handleVisibleEmoji, toggleStatus: iSVisibleEmoji } =
-    useToggle();
-
   const createPostSumbit = async (data: FormCreatePostFields) => {
     const formData = new FormData();
     formData.append("content", data.content);
@@ -59,13 +58,6 @@ export const useFormCreatPostMain = () => {
     });
     clearImage();
   };
-
-  const setEmoji = (
-    emoji: any,
-    e: React.MouseEvent<HTMLElement, MouseEvent>
-  ) => {
-    setValue("content", content + emoji.native);
-  };
   return {
     formState,
     isWordLimitExceeded,
@@ -73,14 +65,11 @@ export const useFormCreatPostMain = () => {
     totalCountWordsInContentField,
     totalCountWordsInContentFieldInPrecent,
     errorsSumbit,
+    isErrorSumbit,
+    preview,
     removeImg,
-    setEmoji,
     createPostSumbit,
     handleSubmit,
     register,
-    isErrorSumbit,
-    preview,
-    iSVisibleEmoji,
-    handleVisibleEmoji,
   };
 };

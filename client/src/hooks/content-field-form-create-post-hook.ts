@@ -1,6 +1,6 @@
-export const useContentFieldFormCreatePost = (content: string | undefined) => {
+export const useContentFieldFormCreatePost = (content: string) => {
   const permissibleCountWords = 280;
-  const totalCountWordsInContentField = content?.length || 0;
+  const totalCountWordsInContentField = content.length;
   const totalCountWordsInContentFieldInPrecent = Math.round(
     (totalCountWordsInContentField / permissibleCountWords) * 100
   );

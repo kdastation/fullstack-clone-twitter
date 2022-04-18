@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { ThemeProvider } from "@mui/material/styles";
@@ -10,18 +9,19 @@ import { QueryClientProvider } from "react-query";
 import { MainApp } from "./utils-components/main-app/main-app";
 import { theme } from "./styles/theme";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <ThemeProvider theme={theme}>
-            <MainApp />
-          </ThemeProvider>
-          <ReactQueryDevtools />
-        </QueryClientProvider>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
+const root = createRoot(document.getElementById("root") as HTMLElement);
+
+const indexComponent = (
+  <Provider store={store}>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <MainApp />
+        </ThemeProvider>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </BrowserRouter>
+  </Provider>
 );
+
+root.render(indexComponent);
