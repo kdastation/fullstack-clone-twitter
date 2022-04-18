@@ -1,12 +1,14 @@
 .track_wrapper{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .track{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 40px;
     padding: 0 10px;
+    cursor: pointer;
     &_left{
         display: flex;
         align-items: center;
@@ -15,5 +17,10 @@
     &__name{
         font-size: 18px;
         font-weight: 600;
+    }
+ 
+    &:hover{
+        z-index: 100;
+        background-color: rgb(245, 248, 250);
     }
 }

@@ -6,6 +6,9 @@
         flex-shrink: 0;
         display: flex;
         align-items: center;
+        input[type="range"]{
+            cursor: pointer;
+        }
     }
     &__values{
         font-size: 20px;

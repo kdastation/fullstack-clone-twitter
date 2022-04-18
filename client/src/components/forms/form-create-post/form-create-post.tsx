@@ -1,12 +1,11 @@
 import { FC } from "react";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import ImageIcon from "@mui/icons-material/Image";
 import { ButtonBlue } from "../../../styled-components/buttons/btn-blue";
 import CircularProgress from "@mui/material/CircularProgress";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { ErrorsCreatePost } from "./errors-create-post/error-create-post";
-import { StylesIcon } from "../../../styles/styles-icon";
 import { Picker } from "emoji-mart";
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { ImageForForm } from "./image-for-form/image-for-form";
 import { useFormCreatPostMain } from "../../../hooks/form-create-post-main-hook";
 import "emoji-mart/css/emoji-mart.css";
@@ -17,7 +16,6 @@ export interface FormCreatePostFields {
   imgFile: FileList | undefined;
 }
 
-//TODO : доделать
 const FormCreatePost: FC = () => {
   const {
     isWordLimitExceeded,
@@ -37,7 +35,7 @@ const FormCreatePost: FC = () => {
     handleSubmit,
   } = useFormCreatPostMain();
   return (
-    <div>
+    <div className="form_create_post_wrapper">
       <form onSubmit={handleSubmit(createPostSumbit)}>
         <div className="form_body_post">
           <div className="form_body_post__avatar">
@@ -65,11 +63,14 @@ const FormCreatePost: FC = () => {
                 accept="image/*"
               />
               <label htmlFor="imgUpload">
-                <ImageIcon sx={StylesIcon} />
+                <AddPhotoAlternateIcon />
               </label>
             </li>
             <li className="form_post_footer__icons__item icon__item_emoji">
-              <InsertEmoticonIcon onClick={handleVisibleEmoji} />
+              <InsertEmoticonIcon
+                color="primary"
+                onClick={handleVisibleEmoji}
+              />
               {iSVisibleEmoji && (
                 <div className="emogi_wrapper">
                   <Picker title="Смайлики" set="facebook" onClick={setEmoji} />

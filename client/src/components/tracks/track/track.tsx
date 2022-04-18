@@ -39,7 +39,7 @@ const Track: FC<TrackProps> = (props) => {
 
   return (
     <div className="track_wrapper">
-      <Paper>
+      <Paper elevation={10}>
         <div className="track">
           <div className="track_left">
             <div>

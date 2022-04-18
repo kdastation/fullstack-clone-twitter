@@ -15,7 +15,6 @@ interface PostProps {
 
 const Post: FC<PostProps> = (props) => {
   const { postData } = props;
-  console.log("RENDER POST", postData.id);
   return (
     <Paper variant="outlined">
       <div className="post_container">

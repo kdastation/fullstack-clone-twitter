@@ -1,0 +1,13 @@
+.logout_panel{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    &__btn_wrapper{
+        width: 100px;
+    }
+    &__user_name{
+        font-size: 20px;
+        font-weight: 600;
+    }
+}

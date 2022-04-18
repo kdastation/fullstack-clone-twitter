@@ -1,8 +1,10 @@
 .post_container{
     padding: 10px;
-    transition: all 0.4s;
+    transition: all 0.1s;
+    cursor: pointer;
     &:hover{
         z-index: 100;
+        background-color: rgb(245, 248, 250);
     }
 }
 
