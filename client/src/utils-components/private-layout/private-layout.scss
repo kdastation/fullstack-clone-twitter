@@ -17,4 +17,8 @@
     .layout_container__body{
         flex-grow: 1;
     }
+
+    @media (max-width: 600px) {
+        grid-template-columns: 90px 3fr 2fr;
+    }   
 }
