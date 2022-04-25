@@ -13,3 +13,10 @@ export const removeTokenInLocalStorage = () => {
 export const determineFileType = (file: File): string => {
   return file?.type.split("/")[0];
 };
+
+export const createAnArrayOfArbitraryLength = (
+  length: number,
+  defaultValue: any = 0
+) => {
+  return Array(length).fill(defaultValue);
+};

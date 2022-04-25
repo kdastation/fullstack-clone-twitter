@@ -5,10 +5,14 @@ export const useTracksUserQuery = () => {
     isLoading,
     data: tracks,
     error,
-  } = useQuery("tracksUser", TracksApiService.getTracksUser);
+    isError,
+  } = useQuery("tracksUser", TracksApiService.getTracksUser, {
+    retry: 0,
+  });
   return {
     isLoading,
     tracks,
     error,
+    isError,
   };
 };
