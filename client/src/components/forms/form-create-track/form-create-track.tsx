@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { validatorsFormCreateTrack } from "../../../validators/validators-create-track";
 import { ErrorForm } from "../../notifications/error-form";
 import { useMode } from "../../../hooks/mode-hook";
+import monkeyMusic from "../../../assets/images/monkey-music.jpg";
 import "./form-create-track.scss";
 import { MessageSuccess } from "../../notifications/message-success/message-success";
 
@@ -53,10 +54,7 @@ const FormCreateTrack: FC = () => {
   return (
     <div className="form_create_track_wrapper form_create_track">
       <div className="form_create_track__logo">
-        <img
-          src="https://media.istockphoto.com/vectors/monkey-head-sunglasses-and-headphones-vector-id1226467953?k=20&m=1226467953&s=612x612&w=0&h=ShJYyZculStuLedmK12Lu1uZdz64XjFre_Cvu0TP6tM="
-          alt=""
-        />
+        <img src={monkeyMusic} alt="" />
       </div>
       <form onSubmit={handleSubmit(createTrackSumbit)}>
         <div>
