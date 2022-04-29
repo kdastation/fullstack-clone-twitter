@@ -2,15 +2,15 @@ import { Alert, Snackbar, SnackbarOrigin } from "@mui/material";
 import { FC } from "react";
 
 interface MessageSuccesProps {
-  isVisibleMessageSucces: boolean;
+  isVisibleMessageSuccess: boolean;
   onClose: () => void;
   position?: SnackbarOrigin;
   autoHideDuration?: number;
 }
 
-const MessageSucces: FC<MessageSuccesProps> = (props) => {
+const MessageSuccess: FC<MessageSuccesProps> = (props) => {
   const {
-    isVisibleMessageSucces,
+    isVisibleMessageSuccess,
     onClose,
     autoHideDuration,
     position,
@@ -20,7 +20,7 @@ const MessageSucces: FC<MessageSuccesProps> = (props) => {
     <Snackbar
       autoHideDuration={autoHideDuration}
       anchorOrigin={position}
-      open={isVisibleMessageSucces}
+      open={isVisibleMessageSuccess}
       onClose={onClose}
     >
       <Alert severity="success" sx={{ width: "100%" }}>
@@ -30,4 +30,4 @@ const MessageSucces: FC<MessageSuccesProps> = (props) => {
   );
 };
 
-export { MessageSucces };
+export { MessageSuccess };

@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -5,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../../async-thunks/auth-async-thunks";
 import { useSubmitData } from "../../../hooks/submit-data-hook";
 import { RoutesPathNames } from "../../../routes/types/routes-path-names";
-import { ButtonBlack } from "../../../styled-components/buttons/btn-black";
-import { StyledTextField } from "../../../styled-components/styled-text-field";
+import { ButtonBlue } from "../../../styled-components/buttons/btn-blue";
 import { StyledWrapperInput } from "../../../styled-components/styled-wrapper-input";
 import { ErrorForm } from "../../notifications/error-form";
 
@@ -40,23 +40,27 @@ const LoginForm: FC<LoginFormProps> = (props) => {
       )}
       <form onSubmit={handleSubmit(submitData)}>
         <StyledWrapperInput>
-          <StyledTextField
+          <TextField
             {...register("email")}
             error={!!messageError}
             label="email"
+            fullWidth
+            variant="filled"
           />
         </StyledWrapperInput>
         <StyledWrapperInput>
-          <StyledTextField
+          <TextField
             {...register("password")}
             error={!!messageError}
             label="password"
             type="password"
+            variant="filled"
+            fullWidth
           />
         </StyledWrapperInput>
-        <ButtonBlack disabled={formState.isSubmitting} type="submit">
+        <ButtonBlue disabled={formState.isSubmitting} type="submit">
           <div data-testid="login">Логин</div>
-        </ButtonBlack>
+        </ButtonBlue>
       </form>
     </div>
   );

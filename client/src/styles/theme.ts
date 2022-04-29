@@ -7,9 +7,14 @@ export const theme = createTheme({
         colorDisabled: {
           color: "black",
         },
+        colorPrimary: {
+          color: "#71C9F8",
+        },
+        colorSecondary: {
+          color: "white",
+        },
         root: {
           cursor: "pointer",
-          color: "#1976d2",
         },
       },
     },

@@ -1,4 +1,4 @@
-import { Modal } from "@mui/material";
+import { Modal, Paper } from "@mui/material";
 import { FC } from "react";
 import "./custom-modal.scss";
 import CloseIcon from "@mui/icons-material/Close";
@@ -6,10 +6,11 @@ import CloseIcon from "@mui/icons-material/Close";
 interface CustomModalProps {
   isActiveModal: boolean;
   onCloseModal: () => void;
+  title: string;
 }
 
 const CustomModal: FC<CustomModalProps> = (props) => {
-  const { isActiveModal, onCloseModal, children } = props;
+  const { isActiveModal, onCloseModal, children, title } = props;
   return (
     <>
       <Modal
@@ -18,11 +19,14 @@ const CustomModal: FC<CustomModalProps> = (props) => {
         aria-describedby="modal-modal-description"
       >
         <div className="modal_wrapper">
-          <div className="modal_close_icon_wrapper">
-            <div onClick={onCloseModal} className="modal_close_icon">
-              <CloseIcon sx={{ fontSize: "35px" }} />
+          <Paper elevation={3}>
+            <div className="modal_header">
+              <div onClick={onCloseModal} className="modal_close_icon">
+                <CloseIcon color="primary" sx={{ fontSize: "35px" }} />
+              </div>
+              <div className="modal_header__title">{title}</div>
             </div>
-          </div>
+          </Paper>
           {children}
         </div>
       </Modal>

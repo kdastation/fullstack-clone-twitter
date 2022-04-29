@@ -10,7 +10,7 @@ import { validatorsFormCreateTrack } from "../../../validators/validators-create
 import { ErrorForm } from "../../notifications/error-form";
 import { useMode } from "../../../hooks/mode-hook";
 import "./form-create-track.scss";
-import { MessageSucces } from "../../notifications/message-succes/message-succes";
+import { MessageSuccess } from "../../notifications/message-success/message-success";
 
 interface FormCreateTrackFields {
   name: string;
@@ -29,12 +29,12 @@ const FormCreateTrack: FC = () => {
     });
 
   const {
-    isMode: isVisibleMessageSucces,
-    activateMode: onOpenMessageSucces,
-    deactivateMode: onCloseMessageSucces,
+    isMode: isVisibleMessageSuccess,
+    activateMode: onOpenMessageSuccess,
+    deactivateMode: onCloseMessageSuccess,
   } = useMode();
 
-  const { createTrack } = useCreateTrackQuery(onOpenMessageSucces);
+  const { createTrack } = useCreateTrackQuery(onOpenMessageSuccess);
 
   const createTrackSumbit = async (data: FormCreateTrackFields) => {
     const trackData = new FormData();
@@ -45,6 +45,7 @@ const FormCreateTrack: FC = () => {
     await createTrack(trackData);
     reset();
   };
+  console.log(isVisibleMessageSuccess);
 
   const audioWatch = watch("audio");
   const audioFile = audioWatch && audioWatch[0];
@@ -109,13 +110,14 @@ const FormCreateTrack: FC = () => {
           </div>
         </div>
       </form>
-      <MessageSucces
-        isVisibleMessageSucces={isVisibleMessageSucces}
-        onClose={onCloseMessageSucces}
-        position={{ horizontal: "left", vertical: "top" }}
+      <MessageSuccess
+        autoHideDuration={3000}
+        onClose={onCloseMessageSuccess}
+        isVisibleMessageSuccess={isVisibleMessageSuccess}
+        position={{ horizontal: "right", vertical: "top" }}
       >
         Трек создан!
-      </MessageSucces>
+      </MessageSuccess>
     </div>
   );
 };

@@ -4,14 +4,16 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
+    .modal_header{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        &__title{
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
 }
 .modal_close_icon_wrapper{
     position: relative;
-}
-
-.modal_close_icon{
-    position: absolute;
-    top: 0;
-    right: 0;
-    cursor: pointer;
 }

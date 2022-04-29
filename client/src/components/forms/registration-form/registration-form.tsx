@@ -1,8 +1,6 @@
-import { StyledTextField } from "../../../styled-components/styled-text-field";
 import { FC } from "react";
 import { StyledWrapperInput } from "../../../styled-components/styled-wrapper-input";
 import { useForm } from "react-hook-form";
-import { ButtonBlack } from "../../../styled-components/buttons/btn-black";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validatorsRegistrationForm } from "../../../validators/validators-registration-form";
 import { useDispatch } from "react-redux";
@@ -11,6 +9,8 @@ import { useSubmitData } from "../../../hooks/submit-data-hook";
 import { registrationUser } from "../../../async-thunks/auth-async-thunks";
 import { RoutesPathNames } from "../../../routes/types/routes-path-names";
 import { ErrorForm } from "../../notifications/error-form";
+import { TextField } from "@mui/material";
+import { ButtonBlue } from "../../../styled-components/buttons/btn-blue";
 
 interface RegistrationFormFields {
   email: string;
@@ -43,41 +43,47 @@ const RegistrationForm: FC = (props) => {
       )}
       <form onSubmit={handleSubmit(registerUserSubmit)}>
         <StyledWrapperInput>
-          <StyledTextField
+          <TextField
             data-testid="email"
             error={!!formState.errors?.email}
             helperText={formState.errors.email?.message}
             label="email"
+            fullWidth
+            variant="filled"
             {...register("email")}
           />
         </StyledWrapperInput>
         <StyledWrapperInput>
-          <StyledTextField
+          <TextField
             error={!!formState.errors?.password?.message}
             helperText={formState.errors?.password?.message}
             type="password"
             data-testid="password"
             label="password"
+            fullWidth
+            variant="filled"
             {...register("password")}
           />
         </StyledWrapperInput>
         <StyledWrapperInput>
-          <StyledTextField
+          <TextField
             error={!!formState.errors?.confirmPassword?.message}
             helperText={formState.errors?.confirmPassword?.message}
             type="password"
             data-testid="confirmPassword"
             label="confirmPassword"
+            fullWidth
+            variant="filled"
             {...register("confirmPassword")}
           />
         </StyledWrapperInput>
-        <ButtonBlack
+        <ButtonBlue
           data-testid="registerBtn"
           disabled={formState.isSubmitting}
           type="submit"
         >
           <div>Зарегистроваться</div>
-        </ButtonBlack>
+        </ButtonBlue>
       </form>
     </div>
   );

@@ -58,7 +58,7 @@ const FormCreatePost: FC = () => {
                 accept="image/*"
               />
               <label htmlFor="imgUpload">
-                <AddPhotoAlternateIcon />
+                <AddPhotoAlternateIcon color="primary" />
               </label>
             </li>
             <li className="form_post_footer__icons__item icon__item_emoji">
