@@ -7,6 +7,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { IPost } from "../../types/post/post";
 import { ApiURLNames } from "../../services/api-service/api-url-names";
 import { PostImage } from "./post-image/post-image";
+import userIcon from "../../assets/images/user.png";
 import "./post.scss";
 
 interface PostProps {
@@ -20,10 +21,7 @@ const Post: FC<PostProps> = (props) => {
       <div className="post_container">
         <div className="post_wrapper">
           <div className="post_left">
-            <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-              alt=""
-            />
+            <img src={userIcon} alt="user" />
           </div>
           <div className="post_body">
             <div className="post_body_header">

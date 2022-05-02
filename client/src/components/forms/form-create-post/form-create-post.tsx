@@ -7,6 +7,7 @@ import { ErrorsCreatePost } from "./errors-create-post/error-create-post";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import { ImageForForm } from "./image-for-form/image-for-form";
 import { useFormCreatPostMain } from "../../../hooks/form-create-post-main-hook";
+import userIcon from "../../../assets/images/user.png";
 import "./form-create-post.scss";
 
 export interface FormCreatePostFields {
@@ -34,10 +35,7 @@ const FormCreatePost: FC = () => {
       <form onSubmit={handleSubmit(createPostSumbit)}>
         <div className="form_body_post">
           <div className="form_body_post__avatar">
-            <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-              alt=""
-            />
+            <img src={userIcon} alt="user" />
           </div>
           <div className="text_field_form_post__wrapper">
             <TextareaAutosize
