@@ -1,7 +1,7 @@
 # Twitter Clone
 
 ## How to run project.
-1. Open the project in any ide (preferably vscode or WebStorm)
+1. Open the project in any ide (preferably vscode or WebStorm).
 2. In the terminal (console) enter the commands: ```cd client``` and ```npm i``` to install the necessary packages for the client/frontend.
 3. For the server part to work, you need to install the database - PostgreSQL (https://www.postgresql.org/download/).
 4. After installation, you need to create a database in the PostgreSQL panel called pgAdmin.
@@ -13,7 +13,7 @@ host (default localhost) and port (default 5432).
 To start the server part - ```cd server``` and ```npm run dev```. To start the client - ```cd client``` and ```npm start```.
 
 ## Как запустить проект.
-1. Окрыть проект в любой ide(желательно в vscode или WebStorm)
+1. Окрыть проект в любой ide(желательно в vscode или WebStorm).
 2. В терминале(консоле) введите комманды : ```cd client``` и ```npm i``` для установки необходимых пакетов для client/frontend.
 3. Для работы серверной части вам необходимо установить базу данных - PostgreSQL(https://www.postgresql.org/download/).
 4. После установки вам нужно создать базу данных в панели PostgreSQL, которая называется pgAdmin.
